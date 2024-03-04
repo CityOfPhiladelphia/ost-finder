@@ -360,6 +360,121 @@ pinboard({
           },
         },
       },
+      fee: {
+        columns: 1, 
+        checkbox: {
+          'free': {
+            unique_key: 'fee_free',
+            i18n_key: 'fee.free',
+            value: function(item) {
+              let value;
+              if (item.attributes.COSTS != null) {
+                // console.log("item.attributes.COSTS.split(', '):", item.attributes.COSTS.split(', '));
+                value = item.attributes.COSTS.split(', ').includes('Free');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'ccis': {
+            unique_key: 'fee_ccis',
+            i18n_key: 'fee.ccis',
+            value: function(item) {
+              let value;
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('CCIS Approved');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'feeBased': {
+            unique_key: 'fee_feeBased',
+            i18n_key: 'fee.feeBased',
+            value: function(item) {
+              let value;
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('Fee based');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'scholarships': {
+            unique_key: 'fee_scholarships',
+            i18n_key: 'fee.scholarships',
+            value: function(item) {
+              let value;
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('Scholarships/Financial Assistance');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+        },
+      },
+      transportation: {
+        columns: 1,
+        checkbox: {
+          'noTransportationProvided': {
+            unique_key: 'transportation_noTransportationProvided',
+            i18n_key: 'transportation.noTransportationProvided',
+            value: function(item) {
+              let value;
+              if (item.attributes.TRANSPORTATION != null) {
+                value = item.attributes.TRANSPORTATION.split(', ').includes('No transportation provided');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'accessible': {
+            unique_key: 'transportation_accessible',
+            i18n_key: 'transportation.accessible',
+            value: function(item) {
+              let value;
+              if (item.attributes.TRANSPORTATION != null) {
+                value = item.attributes.TRANSPORTATION.split(', ').includes('Accessible bus/Subway Stops');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'toSite': {
+            unique_key: 'transportation_toSite',
+            i18n_key: 'transportation.toSite',
+            value: function(item) {
+              let value;
+              if (item.attributes.TRANSPORTATION != null) {
+                value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided to site');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'fromSite': {
+            unique_key: 'transportation_fromSite',
+            i18n_key: 'transportation.fromSite',
+            value: function(item) {
+              let value;
+              if (item.attributes.TRANSPORTATION != null) {
+                value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided from site to home');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+        },
+      },
       
     },
   },

@@ -33,10 +33,12 @@ export default {
     plural: 'Focus Areas',
     isAcademic: 'Academic',
     isArt: 'Arts and culture',
-    isCharacterDevelopment: 'Character education/positive youth development',
+    // isCharacterDevelopment: 'Character education/positive youth development',
+    isCharacterDevelopment: 'Character education',
     isCollegeCareer: 'College and career readiness',
     isCommunityService: 'Community service learning',
-    isHealth: 'Sports, health, and wellness activities',
+    // isHealth: 'Sports, health, and wellness activities',
+    isHealth: 'Sports, health, and wellness',
     isSTEM: 'STEM/STEAM',
   },
   grade: {
@@ -70,7 +72,18 @@ export default {
   },
   fee: {
     category: 'Fee',
-
+    free: 'Free',
+    ccis: 'CCIS approved',
+    feeBased: 'Fee based',
+    // scholarships: 'Scholarships/financial assistance',
+    scholarships: 'Scholarships',
+  },
+  transportation: {
+    category: 'Transportation',
+    noTransportationProvided: 'No transportation provided',
+    accessible: 'Accessible bus/Subway Stops',
+    toSite: 'Transportation provided to site',
+    fromSite: 'Transportation provided from site to home',
   },
   details: 'Details',
   remoteProgram: 'Remote programming offered',
@@ -84,7 +97,7 @@ export default {
   feeDescription: 'Fee description',
   term: 'Term',
   services: 'Services',
-  transportation: 'Transportation',
+  // transportation: 'Transportation',
   meals: 'Meals',
   specialPopulations: 'Special populations',
   transit: {
