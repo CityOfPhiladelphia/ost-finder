@@ -11,7 +11,7 @@
       </h3>
 
       <p v-html="$t('introPage.p0')" />
-      <p v-html="$t('introPage.p1')" />
+      <!-- <p v-html="$t('introPage.p1')" /> -->
 
       <div class="has-text-centered container mb-1 mt-5">
         <button
@@ -21,13 +21,14 @@
         />
       </div>
 
-      <h3>
+      <!-- <h3>
         {{ $t('introPage.section2Title') }}
-      </h3>
+      </h3> -->
 
       <p v-html="$t('introPage.p2')" />
+      <p v-html="$t('introPage.p3')" />
 
-      <ul>
+      <!-- <ul>
         <li
           v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
           :key="index"
@@ -70,7 +71,7 @@
           class="intro-list-item"
           v-html="$t('introPage.ul4.' + index)"
         />
-      </ul>
+      </ul> -->
     </div> <!-- end of main-area -->
   </div>
 </template>
