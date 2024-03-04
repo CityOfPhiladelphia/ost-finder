@@ -122,7 +122,7 @@
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>Remote programming offered:</b> {{ item.attributes.RemoteProgrammingSelect }}
+            <b>{{ $t('remoteProgram') }}:</b> {{ item.attributes.RemoteProgrammingSelect }}
           </div>
         </div>
 
@@ -131,25 +131,7 @@
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>Registration:</b> {{ item.attributes.REGISTRATION }}
-          </div>
-        </div>
-
-        <!-- v-if="item.attributes.RegistrationPeriodStartDate" -->
-        <div
-          class="columns is-mobile"
-        >
-          <div class="column is-11">
-            <b>Registration Start:</b> {{ formatDate2(item.attributes.RegistrationPeriodStartDate) }}
-          </div>
-        </div>
-
-        <!-- v-if="item.attributes.RegistrationPeriodEndDate" -->
-        <div
-          class="columns is-mobile"
-        >
-          <div class="column is-11">
-            <b>Registration End:</b> {{ formatDate2(item.attributes.RegistrationPeriodEndDate) }}
+            <b>{{ $t('registration.category') }}:</b> {{ item.attributes.REGISTRATION }}
           </div>
         </div>
 
@@ -157,7 +139,7 @@
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>Program runs from:</b> {{ datefnsFormat(item.attributes.begindate) }} - {{ datefnsFormat(item.attributes.enddate) }}
+            <b>{{ $t('registration.start') }}:</b> {{ formatDate2(item.attributes.RegistrationPeriodStartDate) }}
           </div>
         </div>
 
@@ -165,7 +147,7 @@
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>Days offered:</b> {{ item.attributes.daynames }}
+            <b>{{ $t('registration.end') }}:</b> {{ formatDate2(item.attributes.RegistrationPeriodEndDate) }}
           </div>
         </div>
 
@@ -173,120 +155,31 @@
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>Time offered:</b> {{ item.attributes.ProgramDirectoryStartTimeSelect }} - {{ item.attributes.ProgramDirectoryEndTimeSelect }}
+            <b>{{ $t('programRunsFrom') }}:</b> {{ datefnsFormat(item.attributes.begindate) }} - {{ datefnsFormat(item.attributes.enddate) }}
           </div>
         </div>
 
-        <!-- <div class="columns is-mobile">
-          <div
-            class="column is-1"
-          >
-            <font-awesome-icon icon="car-bus" />
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('daysOffered.category') }}:</b> {{ item.attributes.daynames }}
           </div>
-          <div class="column">
-            <div v-if="item.attributes.transit_bus">
-              <b>{{ $t('transit.bus') + ': ' }}</b>
-              {{ item.attributes.transit_bus }}
-            </div>
-            <div v-if="item.attributes.transit_subway && Array.isArray(item.attributes.transit_subway)">
-              <b>{{ $t('transit.subway.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of item.attributes.transit_subway"
-                v-if="item.attributes.transit_subway && Array.isArray(item.attributes.transit_subway)"
-                :key="index"
-              >
-                {{ subwayValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="item.attributes.transit_regional_rail">
-              <b>{{ $t('transit.regRail.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of item.attributes.transit_regional_rail.split(',')"
-                :key="index"
-              >
-                {{ trainValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="item.attributes.transit_trolley">
-              <b>{{ $t('transit.trolley') + ': ' }}</b>
-              {{ item.attributes.transit_trolley }}
-            </div>
-            <div v-if="parking">
-              <b>{{ $t('transit.car.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of parking"
-                :key="index"
-              >
-                {{ parkingValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="!item.attributes.transit_parking && !item.attributes.transit_trolley && !item.attributes.transit_regional_rail && !item.attributes.transit_subway && !item.attributes.transit_bus">
-              <span>
-                {{ $t('noInfo') }}
-              </span>
-            </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('timeOffered') }}:</b> {{ item.attributes.ProgramDirectoryStartTimeSelect }} - {{ item.attributes.ProgramDirectoryEndTimeSelect }}
           </div>
-        </div> -->
+        </div>
+        
       </div>
     </div>
 
-    <!-- <h3 class="section-heading">
-      {{ $t('hours') }}
-    </h3>
-    <vue-good-table
-      :columns="days.columns"
-      :rows="days.rows"
-      :sort-options="{ enabled: false }"
-      style-class="vgt-table condensed"
-    >
-      <template
-        slot="table-column"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.label =='Days'"
-          class="table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </span>
-        <span
-          v-if="props.column.label =='Schedule'"
-          class="table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </span>
-      </template>
-
-      <template
-        slot="table-row"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.field == 'label'"
-          class="table-text"
-        >
-          {{ $t(props.row.days) }}
-        </span>
-        <div
-          v-if="props.column.field == 'value'"
-          class="table-text"
-        >
-          {{ props.row.schedule }}
-        </div>
-      </template>
-    </vue-good-table>
-
-    <div class="exceptions-holder">
-      <div
-        v-for="(exception, index) of exceptionsList"
-        :key="index"
-      >
-        {{ parseException(exception, index+1) }}
-      </div>
-    </div> -->
-
     <h3 class="section-heading">
-      Focus Areas
+      {{ $t('focusArea.plural') }}
     </h3>
     <!-- <div v-html="item.attributes.subcats" /> -->
     <div>
@@ -294,9 +187,55 @@
     </div>
 
     <h3 class="section-heading">
-      Details
+      {{ $t('details') }}
     </h3>
     <div v-html="item.attributes.programdescription" />
+
+    <br>
+
+    <div>
+      <b>{{ $t('ages') }}:</b> {{ getAges(item.attributes) }}
+    </div>
+
+    <div>
+      <b>{{ $t('grades') }}:</b> {{ getGrades(item.attributes) }}
+    </div>
+
+    <div>
+      <b>{{ $t('costs') }}:</b> {{ item.attributes.COSTS }}
+    </div>
+
+    <div>
+      <b>{{ $t('feeAmount') }}:</b> ${{ item.attributes.FEE_AMOUNT }}
+    </div>
+
+    <div>
+      <b>{{ $t('feeFrequency') }}:</b> {{ item.attributes.FEE_FREQUENCY }}
+    </div>
+
+    <div>
+      <b>{{ $t('feeDescription') }}:</b> {{ item.attributes.FEE_DESCRIPTION }}
+    </div>
+
+    <div>
+      <b>{{ $t('term') }}:</b> {{ item.attributes.SchoolYearOrSummer }}
+    </div>
+
+    <div>
+      <b>{{ $t('services') }}:</b> {{ item.attributes.SERVICES }}
+    </div>
+
+    <div>
+      <b>{{ $t('transportation') }}:</b> {{ item.attributes.TRANSPORTATION }}
+    </div>
+
+    <div>
+      <b>{{ $t('meals') }}:</b> {{ item.attributes.MEALS }}
+    </div>
+
+    <div>
+      <b>{{ $t('specialPopulations') }}:</b> {{ item.attributes.SPECIAL_POPULATION_SERVED }}
+    </div>
 
     <!-- <h3 class="section-heading">
       {{ $t('paymentOptions') }}
@@ -551,6 +490,24 @@ export default {
     // console.log('ExpandCollapseContent.vue mounted, this.item.attributes.transit_subway.length:', this.item.attributes.transit_subway.length, 'this.item.attributes.transit_subway:', this.item.attributes.transit_subway);
   },
   methods: {
+    getAges(item) {
+      // console.log('getAges is running, item:', item);
+      let options = [ 'isUnder5', 'is5to10', 'is11to13', 'is14to18', 'isAbove18' ];
+      for (let option of options) {
+        if (item[option] == '1') {
+          return this.$i18n.messages[this.i18nLocale].age[option];
+        }
+      }
+    },
+    getGrades(item) {
+      console.log('getGrades is running, item:', item);
+      let options = [ 'serviceGradeLevelPreK', 'serviceGradeLevelK', 'serviceGradeLevel6', 'serviceGradeLevel9' ];
+      for (let option of options) {
+        if (item[option] == '1') {
+          return this.$i18n.messages[this.i18nLocale].grade[option];
+        }
+      }
+    },
     parseException(exception, index) {
       let parsedException = '';
       for (let i=0; i<index; i++) {

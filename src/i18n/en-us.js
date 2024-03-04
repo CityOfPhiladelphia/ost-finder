@@ -30,6 +30,7 @@ export default {
   },
   focusArea: {
     category: 'Focus Area',
+    plural: 'Focus Areas',
     isAcademic: 'Academic',
     isArt: 'Arts and culture',
     isCharacterDevelopment: 'Character education/positive youth development',
@@ -42,8 +43,11 @@ export default {
     category: 'Grade',
     serviceGradeLevelPreK: 'Pre-K',
     serviceGradeLevelK5: 'K-5',
+    serviceGradeLevelK: 'K-5',
     serviceGradeLevel68: '6-8',
+    serviceGradeLevel6: '6-8',
     serviceGradeLevel912: '9-12',
+    serviceGradeLevel9: '9-12',
   },
   daysOffered: {
     category: 'Days offered',
@@ -61,7 +65,28 @@ export default {
     dropIn: 'Drop-in',
     other: 'Other',
     students: 'Only students of school',
+    start: 'Registration start',
+    end: 'Registration end',
   },
+  fee: {
+    category: 'Fee',
+    
+  },
+  details: 'Details',
+  remoteProgram: 'Remote programming offered',
+  programRunsFrom: 'Program runs from',
+  timeOffered: 'Time offered',
+  ages: 'Ages',
+  grades: 'Grades',
+  costs: 'Costs',
+  feeAmount: 'Fee amount',
+  feeFrequency: 'Fee frequency',
+  feeDescription: 'Fee description',
+  term: 'Term',
+  services: 'Services',
+  transportation: 'Transportation',
+  meals: 'Meals',
+  specialPopulations: 'Special populations',
   transit: {
     bus: "Bus",
     subway: {
