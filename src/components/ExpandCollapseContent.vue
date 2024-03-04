@@ -77,9 +77,7 @@
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="column is-6">
         <div
           v-if="item.attributes.INSTAGRAM"
           class="columns is-mobile website-div"
@@ -113,6 +111,69 @@
               {{ makeTwitterHandle(item.attributes.TWITTER) }}
               <font-awesome-icon icon="external-link-alt" />
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-6">
+
+        <div
+          v-if="item.attributes.RemoteProgrammingSelect"
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Remote programming offered:</b> {{ item.attributes.RemoteProgrammingSelect }}
+          </div>
+        </div>
+
+        <div
+          v-if="item.attributes.REGISTRATION"
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Registration:</b> {{ item.attributes.REGISTRATION }}
+          </div>
+        </div>
+
+        <!-- v-if="item.attributes.RegistrationPeriodStartDate" -->
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Registration Start:</b> {{ formatDate2(item.attributes.RegistrationPeriodStartDate) }}
+          </div>
+        </div>
+
+        <!-- v-if="item.attributes.RegistrationPeriodEndDate" -->
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Registration End:</b> {{ formatDate2(item.attributes.RegistrationPeriodEndDate) }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Program runs from:</b> {{ datefnsFormat(item.attributes.begindate) }} - {{ datefnsFormat(item.attributes.enddate) }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Days offered:</b> {{ item.attributes.daynames }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>Time offered:</b> {{ item.attributes.ProgramDirectoryStartTimeSelect }} - {{ item.attributes.ProgramDirectoryEndTimeSelect }}
           </div>
         </div>
 
@@ -502,8 +563,40 @@ export default {
       }
       return parsedException;
     },
+    datefnsFormat_str(date) {
+      console.log('datefnsFormat_str is running, date:', date);
+      let value;
+      if (date) {
+        value = format(parseISO(date), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
+    datefnsFormat(date) {
+      console.log('datefnsFormat is running, date:', date);
+      let value;
+      if (date) {
+        value = format(parseISO(date), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
+    formatDate2(date) {
+      let value;
+      if (date) {
+        let splitDate = date.split('/');
+        if (splitDate[0].length == 1) {
+          splitDate[0] = '0' + splitDate[0];
+        }
+        if (splitDate[1].length == 1) {
+          splitDate[1] = '0' + splitDate[1];
+        }
+        let newDate = splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1] + 'T00:00:00';
+        console.log('formatDate2 is running, date:', date, 'newDate:', newDate);
+        value = format(parseISO(newDate), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
     formatDate(month, day) {
-      // console.log('formatDate is running, month:', month, 'day:', day, 'this.i18nLocale:', this.i18nLocale);
+      console.log('formatDate is running, month:', month, 'day:', day, 'this.i18nLocale:', this.i18nLocale);
       let monthNumber = {
         January: 0,
         February: 1,

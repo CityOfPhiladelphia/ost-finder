@@ -1,8 +1,8 @@
 export default {
   language: 'English',
   app: {
-    title: "OST Finder",
-    subtitle: 'OST subtitle',
+    title: "After school and summer program locator",
+    subtitle: 'Find Out-of-School Time activities for children',
     noResults: "We're sorry, there are no results for that search. Adjust the filters you've selected and try again.",
     searchPlaceholders: {
       all: 'Search by address or program name',
