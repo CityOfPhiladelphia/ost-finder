@@ -50,6 +50,7 @@ pinboard({
   gtag: {
     category: 'rf-ost',
   },
+  // anySearch: true,
   allowPrint: true,
   showBuffers: true,
   resetDataOnGeocode: true,
@@ -68,7 +69,7 @@ pinboard({
     tags: [
       {
         type: 'value',
-        field: 'name',
+        field: 'programname',
       },
     ],
   },
