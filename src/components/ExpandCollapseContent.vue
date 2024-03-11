@@ -226,7 +226,7 @@
     </div>
 
     <div>
-      <b>{{ $t('transportation') }}:</b> {{ item.attributes.TRANSPORTATION }}
+      <b>{{ $t('transportation.category') }}:</b> {{ item.attributes.TRANSPORTATION }}
     </div>
 
     <div>
