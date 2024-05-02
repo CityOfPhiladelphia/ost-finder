@@ -178,12 +178,26 @@
       </div>
     </div>
 
-    <h3 class="section-heading">
+    <h3 v-if="this.hasFocusAreas" class="section-heading">
       {{ $t('focusArea.plural') }}
     </h3>
-    <!-- <div v-html="item.attributes.subcats" /> -->
-    <div>
-    {{ item.attributes.subcats }}
+    <div v-if="item.attributes.isArt">
+      <b>Arts and Culture:</b>{{ this.artsAndCulture }}
+    </div>
+    <div v-if="item.attributes.isHealth">
+      <b>Sports, Health and Wellness Activities:</b>{{ this.health }}
+    </div>
+    <div v-if="item.attributes.isCharacterDevelopment">
+      <b>Character Education/Positive Youth Development:</b>{{ this.characterDevelopment }}
+    </div>
+    <div v-if="item.attributes.isCommunityService">
+      <b>Community Service Learning:</b>{{ this.communityService }}
+    </div>
+    <div v-if="item.attributes.isSTEM">
+      <b>STEM/STEAM:</b>{{ this.stem }}
+    </div>
+    <div v-if="item.attributes.isCareerConnected || item.attributes.isCollegeCareer">
+      <b>College and Career Readiness:</b>{{ this.collegeCareer }}
     </div>
 
     <h3 class="section-heading">
@@ -323,6 +337,69 @@ export default {
     },
   },
   computed: {
+    hasFocusAreas() {
+      return this.item.attributes.isArt || this.item.attributes.isHealth || this.item.attributes.isCharacterDevelopment || this.item.attributes.isCommunityService || this.item.attributes.isSTEM || this.item.attributes.isCareerConnected;
+    },
+    artsAndCulture() {
+      let value = ' ';
+      if (this.item.attributes['Arts and Culture']) {
+        for (let i=0; i<this.item.attributes['Arts and Culture'].length-1; i++) {
+          value += this.item.attributes['Arts and Culture'][i] + ', ';
+        }
+        value += this.item.attributes['Arts and Culture'][this.item.attributes['Arts and Culture'].length-1];
+      }
+      return value;
+    },
+    health() {
+      let value = ' ';
+      if (this.item.attributes['Sports, Health and Wellness Activities']) {
+        for (let i=0; i<this.item.attributes['Sports, Health and Wellness Activities'].length-1; i++) {
+          value += this.item.attributes['Sports, Health and Wellness Activities'][i] + ', ';
+        }
+        value += this.item.attributes['Sports, Health and Wellness Activities'][this.item.attributes['Sports, Health and Wellness Activities'].length-1];
+      }
+      return value;
+    },
+    characterDevelopment() {
+      let value = ' ';
+      if (this.item.attributes['Character Education/Positive Youth Development']) {
+        for (let i=0; i<this.item.attributes['Character Education/Positive Youth Development'].length-1; i++) {
+          value += this.item.attributes['Character Education/Positive Youth Development'][i] + ', ';
+        }
+        value += this.item.attributes['Character Education/Positive Youth Development'][this.item.attributes['Character Education/Positive Youth Development'].length-1];
+      }
+      return value;
+    },
+    communityService() {
+      let value = ' ';
+      if (this.item.attributes['Community Service Learning']) {
+        for (let i=0; i<this.item.attributes['Community Service Learning'].length-1; i++) {
+          value += this.item.attributes['Community Service Learning'][i] + ', ';
+        }
+        value += this.item.attributes['Community Service Learning'][this.item.attributes['Community Service Learning'].length-1];
+      }
+      return value;
+    },
+    stem() {
+      let value = ' ';
+      if (this.item.attributes['STEM/STEAM']) {
+        for (let i=0; i<this.item.attributes['STEM/STEAM'].length-1; i++) {
+          value += this.item.attributes['STEM/STEAM'][i] + ', ';
+        }
+        value += this.item.attributes['STEM/STEAM'][this.item.attributes['STEM/STEAM'].length-1];
+      }
+      return value;
+    },
+    collegeCareer() {
+      let value = ' ';
+      if (this.item.attributes['College and Career Readiness']) {
+        for (let i=0; i<this.item.attributes['College and Career Readiness'].length-1; i++) {
+          value += this.item.attributes['College and Career Readiness'][i] + ', ';
+        }
+        value += this.item.attributes['College and Career Readiness'][this.item.attributes['College and Career Readiness'].length-1];
+      }
+      return value;
+    },
     showTwitter() {
       let value = false;
       let badValues = [ 'N/A', 'n/a', 'na', 'NA', 'Na', 'nA', 'none' ];

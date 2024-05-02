@@ -3,7 +3,7 @@ export default {
   type: 'http-get',
   dependent: 'none',
   resettable: false,
-  url: 'https://api.cityspan.com/phillyost/service/getall',
+  url: 'https://stage.cityspan.com:8080/phillyost/service/getall',
   options: {
     success: function(data) {
       console.log('ost.js success is running, data:', data);

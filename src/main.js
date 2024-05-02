@@ -75,12 +75,17 @@ pinboard({
   },
   locationInfo: {
     siteName: function(item) {
+      return item.attributes.ProgramLocatorActivityName;
       // return item.attributes.servicename;
-      return item.attributes.programname;
+      // return item.attributes.programname;
     },
   },
   customComps,
-  // hiddenRefine: {
+  hiddenRefine: {
+    SchoolYearOrSummer(item) {
+      return item.attributes.SchoolYearOrSummer != 'School Year' && item.attributes.isInPublicProgramDirectory == "1";
+    },
+  },
   //   START_DATE: function(item) {
   //     // let today = format(new Date(), 'MM/dd/yyyy');
   //     let today = Date.parse(new Date());
