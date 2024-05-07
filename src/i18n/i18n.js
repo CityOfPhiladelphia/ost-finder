@@ -10,7 +10,7 @@ let i18n = {
   i18n: {
     header: 'inside',
     enabled: true,
-    selectorHidden: false,
+    selectorHidden: true,
     refinePanel: true,
     expandCollapseTitle: true,
     footer: true,

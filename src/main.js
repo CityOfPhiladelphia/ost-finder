@@ -424,63 +424,63 @@ pinboard({
           },
         },
       },
-      transportation: {
-        columns: 1,
-        checkbox: {
-          'noTransportationProvided': {
-            unique_key: 'transportation_noTransportationProvided',
-            i18n_key: 'transportation.noTransportationProvided',
-            value: function(item) {
-              let value;
-              if (item.attributes.TRANSPORTATION != null) {
-                value = item.attributes.TRANSPORTATION.split(', ').includes('No transportation provided');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'accessible': {
-            unique_key: 'transportation_accessible',
-            i18n_key: 'transportation.accessible',
-            value: function(item) {
-              let value;
-              if (item.attributes.TRANSPORTATION != null) {
-                value = item.attributes.TRANSPORTATION.split(', ').includes('Accessible bus/Subway Stops');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'toSite': {
-            unique_key: 'transportation_toSite',
-            i18n_key: 'transportation.toSite',
-            value: function(item) {
-              let value;
-              if (item.attributes.TRANSPORTATION != null) {
-                value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided to site');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'fromSite': {
-            unique_key: 'transportation_fromSite',
-            i18n_key: 'transportation.fromSite',
-            value: function(item) {
-              let value;
-              if (item.attributes.TRANSPORTATION != null) {
-                value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided from site to home');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-        },
-      },
+      // transportation: {
+      //   columns: 1,
+      //   checkbox: {
+      //     'noTransportationProvided': {
+      //       unique_key: 'transportation_noTransportationProvided',
+      //       i18n_key: 'transportation.noTransportationProvided',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('No transportation provided');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'accessible': {
+      //       unique_key: 'transportation_accessible',
+      //       i18n_key: 'transportation.accessible',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Accessible bus/Subway Stops');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'toSite': {
+      //       unique_key: 'transportation_toSite',
+      //       i18n_key: 'transportation.toSite',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided to site');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'fromSite': {
+      //       unique_key: 'transportation_fromSite',
+      //       i18n_key: 'transportation.fromSite',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided from site to home');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //   },
+      // },
       
     },
   },
