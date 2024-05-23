@@ -51,6 +51,7 @@ pinboard({
     category: 'rf-ost',
   },
   // anySearch: true,
+  allowZipcodeSearch: true,
   allowPrint: true,
   showBuffers: true,
   resetDataOnGeocode: true,
@@ -59,6 +60,7 @@ pinboard({
   searchBar: {
     searchTypes: [
       'address',
+      'zipcode',
       'keyword',
     ],
     searchDistance: 3,
@@ -69,7 +71,7 @@ pinboard({
     tags: [
       {
         type: 'value',
-        field: 'programname',
+        field: 'ProgramLocatorActivityName',
       },
     ],
   },

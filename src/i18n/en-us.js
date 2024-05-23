@@ -5,7 +5,7 @@ export default {
     subtitle: 'Find Out-of-School Time activities for children',
     noResults: "We're sorry, there are no results for that search. Adjust the filters you've selected and try again.",
     searchPlaceholders: {
-      all: 'Search by address or program name',
+      all: 'Search by address, zipcode or program name',
     },
   },
   eligibility: 'Eligibility',
