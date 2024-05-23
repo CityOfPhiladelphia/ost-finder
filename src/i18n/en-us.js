@@ -20,6 +20,11 @@ export default {
   paymentOptions: 'Payment Options',
   season: 'Season',
   yearRound: 'Year Round',
+  achieversAndC2L: {
+    category: 'Programs',
+    isAchievers: 'Summer Achievers',
+    isC2L: 'Career Connected Learning (C2L)',
+  },
   age: {
     category: 'Age',
     isUnder5: 'Under 5',

@@ -83,7 +83,10 @@ pinboard({
   customComps,
   hiddenRefine: {
     SchoolYearOrSummer(item) {
-      return item.attributes.SchoolYearOrSummer != 'School Year' && item.attributes.isInPublicProgramDirectory == "1";
+      // return item.attributes.SchoolYearOrSummer != 'School Year' && item.attributes.isInPublicProgramDirectory == "1";
+      return item.attributes.ProgramLocatorActivityName !== ''
+        && item.attributes.ProgramLocatorActivityName !== null
+        && item.attributes.isInPublicProgramDirectory == "1";
     },
   },
   //   START_DATE: function(item) {
@@ -115,6 +118,25 @@ pinboard({
     type: 'multipleFieldGroups',
     columns: true,
     multipleFieldGroups: {
+      achieversAndC2L: {
+        columns: 1,
+        checkbox: {
+          'isAchievers': {
+            unique_key: 'achieversAndC2L_isAchievers',
+            i18n_key: 'achieversAndC2L.isAchievers',
+            value: function(item) {
+              return item.attributes.isAcademicAchievers != null;
+            },
+          },
+          'isC2L': {
+            unique_key: 'achieversAndC2L_isC2L',
+            i18n_key: 'achieversAndC2L.isC2L',
+            value: function(item) {
+              return item.attributes.isCareerConnected != null;
+            },
+          },
+        },
+      },
       age: {
         columns: 1,
         checkbox: {
