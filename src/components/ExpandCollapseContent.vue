@@ -61,7 +61,7 @@
         </div>
 
         <div
-          v-if="item.attributes.FACEBOOK"
+          v-if="item.attributes.FACEBOOK && item.attributes.FACEBOOK !== 'Lloyd Hall'"
           class="columns is-mobile website-div"
         >
           <div class="column is-1">
@@ -181,22 +181,22 @@
     <h3 v-if="this.hasFocusAreas" class="section-heading">
       {{ $t('focusArea.plural') }}
     </h3>
-    <div v-if="item.attributes.isArt">
+    <div v-if="item.attributes.artsAndCulture && item.attributes.artsAndCulture.length">
       <b>Arts and Culture:</b>{{ this.artsAndCulture }}
     </div>
-    <div v-if="item.attributes.isHealth">
+    <div v-if="item.attributes.health && item.attributes.health.length">
       <b>Sports, Health and Wellness Activities:</b>{{ this.health }}
     </div>
-    <div v-if="item.attributes.isCharacterDevelopment">
+    <div v-if="item.attributes.characterDevelopment && item.attributes.characterDevelopment.length">
       <b>Character Education/Positive Youth Development:</b>{{ this.characterDevelopment }}
     </div>
-    <div v-if="item.attributes.isCommunityService">
+    <div v-if="item.attributes.communityService && item.attributes.communityService.length">
       <b>Community Service Learning:</b>{{ this.communityService }}
     </div>
-    <div v-if="item.attributes.isSTEM">
+    <div v-if="item.attributes.stem && item.attributes.stem.length">
       <b>STEM/STEAM:</b>{{ this.stem }}
     </div>
-    <div v-if="item.attributes.isCareerConnected || item.attributes.isCollegeCareer">
+    <div v-if="item.attributes.collegeCareer && item.attributes.collegeCareer.length">
       <b>College and Career Readiness:</b>{{ this.collegeCareer }}
     </div>
 
@@ -207,47 +207,47 @@
 
     <br>
 
-    <div>
+    <div v-if="getAges(item.attributes) !== null">
       <b>{{ $t('ages') }}:</b> {{ getAges(item.attributes) }}
     </div>
 
-    <div>
+    <div v-if="getGrades(item.attributes) !== null">
       <b>{{ $t('grades') }}:</b> {{ getGrades(item.attributes) }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.COSTS !== null">
       <b>{{ $t('costs') }}:</b> {{ item.attributes.COSTS }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.FEE_AMOUNT !== null">
       <b>{{ $t('feeAmount') }}:</b> ${{ item.attributes.FEE_AMOUNT }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.FEE_FREQUENCY !== null">
       <b>{{ $t('feeFrequency') }}:</b> {{ item.attributes.FEE_FREQUENCY }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.FEE_DESCRIPTION !== null">
       <b>{{ $t('feeDescription') }}:</b> {{ item.attributes.FEE_DESCRIPTION }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.SchoolYearOrSummer !== null">
       <b>{{ $t('term') }}:</b> {{ item.attributes.SchoolYearOrSummer }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.SERVICES !== null">
       <b>{{ $t('services') }}:</b> {{ item.attributes.SERVICES }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.TRANSPORTATION !== null">
       <b>{{ $t('transportation.category') }}:</b> {{ item.attributes.TRANSPORTATION }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.MEALS !== null">
       <b>{{ $t('meals') }}:</b> {{ item.attributes.MEALS }}
     </div>
 
-    <div>
+    <div v-if="item.attributes.SPECIAL_POPULATION_SERVED !== null">
       <b>{{ $t('specialPopulations') }}:</b> {{ item.attributes.SPECIAL_POPULATION_SERVED }}
     </div>
 
@@ -570,20 +570,24 @@ export default {
     getAges(item) {
       // console.log('getAges is running, item:', item);
       let options = [ 'isUnder5', 'is5to10', 'is11to13', 'is14to18', 'isAbove18' ];
+      let finalAges = [];
       for (let option of options) {
         if (item[option] == '1') {
-          return this.$i18n.messages[this.i18nLocale].age[option];
+          finalAges.push(this.$i18n.messages[this.i18nLocale].age[option]);
         }
       }
+      return finalAges.join(', ');
     },
     getGrades(item) {
       console.log('getGrades is running, item:', item);
       let options = [ 'serviceGradeLevelPreK', 'serviceGradeLevelK', 'serviceGradeLevel6', 'serviceGradeLevel9' ];
+      let finalGrades = [];
       for (let option of options) {
         if (item[option] == '1') {
-          return this.$i18n.messages[this.i18nLocale].grade[option];
+          finalGrades.push(this.$i18n.messages[this.i18nLocale].grade[option]);
         }
       }
+      return finalGrades.join(', ');
     },
     parseException(exception, index) {
       let parsedException = '';
