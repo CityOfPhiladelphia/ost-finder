@@ -120,6 +120,25 @@ pinboard({
     type: 'multipleFieldGroups',
     columns: true,
     multipleFieldGroups: {
+      term: {
+        columns: 1,
+        checkbox: {
+          'summer': {
+            unique_key: 'term_summer',
+            i18n_key: 'term.summer',
+            value: function(item) {
+              return item.attributes.SchoolYearOrSummer === 'Summer';
+            },
+          },
+          'schoolYear': {
+            unique_key: 'term_schoolYear',
+            i18n_key: 'term.schoolYear',
+            value: function(item) {
+              return item.attributes.SchoolYearOrSummer === 'School Year';
+            },
+          },
+        },
+      },
       achieversAndC2L: {
         columns: 1,
         checkbox: {
@@ -135,6 +154,80 @@ pinboard({
             i18n_key: 'achieversAndC2L.isC2L',
             value: function(item) {
               return item.attributes.isCareerConnected != null;
+            },
+          },
+        },
+      },
+      registration: {
+        columns: 1,
+        checkbox: {
+          'open': {
+            unique_key: 'registration_open',
+            i18n_key: 'registration.open',
+            value: function(item) {
+              let value;
+              if (item.attributes.RegistrationPeriodEndDate != null) {
+                console.log('new Date():', new Date(), 'new Date(item.attributes.RegistrationPeriodEndDate):', new Date(item.attributes.RegistrationPeriodEndDate));
+                value = new Date() < new Date(item.attributes.RegistrationPeriodEndDate);
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'required': {
+            unique_key: 'registration_required',
+            i18n_key: 'registration.required',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                value = item.attributes.REGISTRATION.split(', ').includes('Registration required');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'dropIn': {
+            unique_key: 'registration_dropIn',
+            i18n_key: 'registration.dropIn',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Drop-in');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'other': {
+            unique_key: 'registration_other',
+            i18n_key: 'registration.other',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Other');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'students': {
+            unique_key: 'registration_students',
+            i18n_key: 'registration.students',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Program only open to students attending this school');
+              } else {
+                value = false;
+              }
+              return value;
             },
           },
         },
@@ -330,66 +423,6 @@ pinboard({
           },
         },
       },
-      registration: {
-        columns: 1,
-        checkbox: {
-          'required': {
-            unique_key: 'registration_required',
-            i18n_key: 'registration.required',
-            value: function(item) {
-              let value;
-              if (item.attributes.REGISTRATION) {
-                value = item.attributes.REGISTRATION.split(', ').includes('Registration required');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'dropIn': {
-            unique_key: 'registration_dropIn',
-            i18n_key: 'registration.dropIn',
-            value: function(item) {
-              let value;
-              if (item.attributes.REGISTRATION) {
-                console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Drop-in');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'other': {
-            unique_key: 'registration_other',
-            i18n_key: 'registration.other',
-            value: function(item) {
-              let value;
-              if (item.attributes.REGISTRATION) {
-                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Other');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-          'students': {
-            unique_key: 'registration_students',
-            i18n_key: 'registration.students',
-            value: function(item) {
-              let value;
-              if (item.attributes.REGISTRATION) {
-                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Program only open to students attending this school');
-              } else {
-                value = false;
-              }
-              return value;
-            },
-          },
-        },
-      },
       fee: {
         columns: 1, 
         checkbox: {
@@ -535,7 +568,7 @@ pinboard({
     },
     {
       type: "native",
-      href: "https://www.phila.gov/farmers-markets/",
+      href: "https://www.phila.gov/ost/program-locator/#/",
       text: "about",
     },
     {

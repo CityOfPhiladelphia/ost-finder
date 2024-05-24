@@ -20,10 +20,19 @@ export default {
   paymentOptions: 'Payment Options',
   season: 'Season',
   yearRound: 'Year Round',
+  registration: {
+    category: 'Registration',
+    open: 'Open',
+  },
+  term: {
+    category: 'Term',
+    summer: 'Summer',
+    schoolYear: 'School Year',
+  },
   achieversAndC2L: {
     category: 'Programs',
     isAchievers: 'Summer Achievers',
-    isC2L: 'Career Connected Learning (C2L)',
+    isC2L: 'Career Connected Learning (C2L-PHL)',
   },
   age: {
     category: 'Age',
@@ -68,6 +77,7 @@ export default {
   },
   registration: {
     category: 'Registration',
+    open: 'Registration Open',
     required: 'Required',
     dropIn: 'Drop-in',
     other: 'Other',
@@ -100,7 +110,7 @@ export default {
   feeAmount: 'Fee amount',
   feeFrequency: 'Fee frequency',
   feeDescription: 'Fee description',
-  term: 'Term',
+  // term: 'Term',
   services: 'Services',
   // transportation: 'Transportation',
   meals: 'Meals',

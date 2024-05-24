@@ -232,7 +232,7 @@
     </div>
 
     <div v-if="item.attributes.SchoolYearOrSummer !== null">
-      <b>{{ $t('term') }}:</b> {{ item.attributes.SchoolYearOrSummer }}
+      <b>{{ $t('term.category') }}:</b> {{ item.attributes.SchoolYearOrSummer }}
     </div>
 
     <div v-if="item.attributes.SERVICES !== null">
