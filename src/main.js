@@ -167,7 +167,7 @@ pinboard({
             value: function(item) {
               let value;
               if (item.attributes.RegistrationPeriodEndDate != null) {
-                console.log('new Date():', new Date(), 'new Date(item.attributes.RegistrationPeriodEndDate):', new Date(item.attributes.RegistrationPeriodEndDate));
+                // console.log('new Date():', new Date(), 'new Date(item.attributes.RegistrationPeriodEndDate):', new Date(item.attributes.RegistrationPeriodEndDate));
                 value = new Date() < new Date(item.attributes.RegistrationPeriodEndDate);
               } else {
                 value = false;
