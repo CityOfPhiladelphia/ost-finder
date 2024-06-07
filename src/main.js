@@ -68,7 +68,7 @@ pinboard({
       'keyword',
     ],
     searchDistance: 3,
-    fuseThreshold: 0.4,
+    fuseThreshold: 0.45,
   },
   tags: {
     type: 'fieldValues',
@@ -76,6 +76,10 @@ pinboard({
       {
         type: 'value',
         field: 'ProgramLocatorActivityName',
+      },
+      {
+        type: 'value',
+        field: 'school',
       },
     ],
   },
