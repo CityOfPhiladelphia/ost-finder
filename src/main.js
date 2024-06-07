@@ -46,6 +46,10 @@ pinboard({
   i18n: i18n.i18n,
   app: {
     type: 'ost',
+    logoSrc: require('@/assets/beta_01.png'),
+    logoLink: 'none',
+    logoWidth: 50,
+    logoAlt: 'City of Philadelphia',
   },
   gtag: {
     category: 'rf-ost',
