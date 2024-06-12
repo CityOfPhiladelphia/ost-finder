@@ -1,11 +1,11 @@
 export default {
   language: 'English',
   app: {
-    title: "OST Finder",
-    subtitle: 'OST subtitle',
+    title: "After school and summer program locator",
+    subtitle: 'Find Out-of-School Time activities for children',
     noResults: "We're sorry, there are no results for that search. Adjust the filters you've selected and try again.",
     searchPlaceholders: {
-      all: 'Search by address or program name',
+      all: 'Search by address, zipcode, or program name',
     },
   },
   eligibility: 'Eligibility',
@@ -20,6 +20,20 @@ export default {
   paymentOptions: 'Payment Options',
   season: 'Season',
   yearRound: 'Year Round',
+  registration: {
+    category: 'Registration',
+    open: 'Open',
+  },
+  term: {
+    category: 'Term',
+    summer: 'Summer',
+    schoolYear: 'School Year',
+  },
+  achieversAndC2L: {
+    category: 'Programs',
+    isAchievers: 'Summer Achievers',
+    isC2L: 'Career Connected Learning (C2L-PHL)',
+  },
   age: {
     category: 'Age',
     isUnder5: 'Under 5',
@@ -30,20 +44,26 @@ export default {
   },
   focusArea: {
     category: 'Focus Area',
+    plural: 'Focus Areas',
     isAcademic: 'Academic',
     isArt: 'Arts and culture',
-    isCharacterDevelopment: 'Character education/positive youth development',
+    // isCharacterDevelopment: 'Character education/positive youth development',
+    isCharacterDevelopment: 'Character education',
     isCollegeCareer: 'College and career readiness',
     isCommunityService: 'Community service learning',
-    isHealth: 'Sports, health, and wellness activities',
+    // isHealth: 'Sports, health, and wellness activities',
+    isHealth: 'Sports, health, and wellness',
     isSTEM: 'STEM/STEAM',
   },
   grade: {
     category: 'Grade',
     serviceGradeLevelPreK: 'Pre-K',
     serviceGradeLevelK5: 'K-5',
+    serviceGradeLevelK: 'K-5',
     serviceGradeLevel68: '6-8',
+    serviceGradeLevel6: '6-8',
     serviceGradeLevel912: '9-12',
+    serviceGradeLevel9: '9-12',
   },
   daysOffered: {
     category: 'Days offered',
@@ -57,11 +77,44 @@ export default {
   },
   registration: {
     category: 'Registration',
+    open: 'Registration Open',
     required: 'Required',
     dropIn: 'Drop-in',
     other: 'Other',
     students: 'Only students of school',
+    start: 'Registration start',
+    end: 'Registration end',
   },
+  fee: {
+    category: 'Fee',
+    free: 'Free',
+    ccis: 'CCIS approved',
+    feeBased: 'Fee based',
+    // scholarships: 'Scholarships/financial assistance',
+    scholarships: 'Scholarships',
+  },
+  transportation: {
+    category: 'Transportation',
+    noTransportationProvided: 'No transportation provided',
+    accessible: 'Accessible bus/Subway Stops',
+    toSite: 'Transportation provided to site',
+    fromSite: 'Transportation provided from site to home',
+  },
+  details: 'Details',
+  remoteProgram: 'Remote programming offered',
+  programRunsFrom: 'Program runs from',
+  timeOffered: 'Time offered',
+  ages: 'Ages',
+  grades: 'Grades',
+  costs: 'Costs',
+  feeAmount: 'Fee amount',
+  feeFrequency: 'Fee frequency',
+  feeDescription: 'Fee description',
+  // term: 'Term',
+  services: 'Services',
+  // transportation: 'Transportation',
+  meals: 'Meals',
+  specialPopulations: 'Special populations',
   transit: {
     bus: "Bus",
     subway: {
@@ -128,30 +181,42 @@ export default {
   futureHolidayClosure: "This site will by temporarily closed for ",
   introPage: {
     section1Title: "Find an out of school time program",
-    p0: "Local farmers sell their food and other goods to customers at these markets.",
-    p1: "Use this tool to find opening dates, hours, payment options, and more about each location.",
+    p0: "The Out-of-School programs (“OST Program(s)”) are not operated, endorsed, or \
+    controlled by the City of Philadelphia (“City”). The City is providing this list of \
+    programs for your convenience only. If you use any program links, you will leave \
+    the City’s website and be directed to a website for that particular OST Program.",
+    // p1: "Use this tool to find opening dates, hours, payment options, and more about each location.",
     section2Title: "Before you go",
-    p2: "Use the contact information for each location to:",
-    ul1: {
-      li1: "Verify whether the market will be open during bad weather.",
-      li2: "Ask about pre-ordering or online payments.",
-      li3: "Learn more about free and reduced-price produce options.",
-    },
-    section3Title: "Programs to help pay for food",
-    p3: "You may qualify for programs to help you afford fresh, local foods.",
-    ul2: {
-      li1: "The Supplemental Nutrition Assistance Program (SNAP) helps low-income people pay for groceries. Call the local SNAP hotline at <a href='tel:215-765-9040'>(215) 430-0556</a> to find out if you qualify.",
-      li2: "Food Bucks help SNAP users save money on fruits and vegetable. Get $2 in Food Bucks for every $5 you spend at participating markets. Learn more from <a href='https://thefoodtrust.org/what-we-do/food-bucks/' target='_blank'>The Food Trust.</a>",
-      li3: "The Farmers' Market Nutrition Program offers vouchers to WIC recipients and low-income seniors.",
-    },
-    ul3: {
-      li1: "Contact <a href='https://www.pawic.com/default.aspx' target='_blank'>your local WIC office</a> to learn more about the program for women, infants, and children (WIC).",
-      li2: "Call the Philadelphia Corporation for Aging at <a href='tel:215-765-9040'>(215) 765-9040</a> to ask about the program for seniors.",
-    },
-    section4Title: "For farmers' market and farm stand operators",
-    ul4: {
-      li1: "<a href='mailto:jennifer.aquilante@phila.gov'>Email Jennifer Aquilante</a> to add your market or stand to the finder.",
-      li2: "Learn more about how to <a href='https://www.phila.gov/services/permits-violations-licenses/get-a-license/business-licenses/food-businesses/operate-a-farmers-market/' target='_blank'>operate a farmers' market in Philadelphia</a>.",
-    },
+    p2: "The City provides no warranties, promises, and/or representations of any kind, \
+    expressed or implied, as to the nature, standard, or accuracy provided by these OST \
+    Programs, nor to the suitability or otherwise information to your particular \
+    circumstances. The City does not endorse, approve, or control the information contained \
+    in the program websites. The information is provided only on an “as is” and “with all \
+    faults” basis.",
+    // ul1: {
+    //   li1: "Verify whether the market will be open during bad weather.",
+    //   li2: "Ask about pre-ordering or online payments.",
+    //   li3: "Learn more about free and reduced-price produce options.",
+    // },
+    // section3Title: "Programs to help pay for food",
+    p3: "By clicking on any external links, you acknowledge that in no event shall the \
+    City be liable to you or to any other person or entity for any direct, indirect, \
+    special, incidental, or consequential or other damage, cost, or expense arising out \
+    of or in relation to the enrollment in these OST Programs or use of any of the OST \
+    Programs’ websites.",
+    // ul2: {
+    //   li1: "The Supplemental Nutrition Assistance Program (SNAP) helps low-income people pay for groceries. Call the local SNAP hotline at <a href='tel:215-765-9040'>(215) 430-0556</a> to find out if you qualify.",
+    //   li2: "Food Bucks help SNAP users save money on fruits and vegetable. Get $2 in Food Bucks for every $5 you spend at participating markets. Learn more from <a href='https://thefoodtrust.org/what-we-do/food-bucks/' target='_blank'>The Food Trust.</a>",
+    //   li3: "The Farmers' Market Nutrition Program offers vouchers to WIC recipients and low-income seniors.",
+    // },
+    // ul3: {
+    //   li1: "Contact <a href='https://www.pawic.com/default.aspx' target='_blank'>your local WIC office</a> to learn more about the program for women, infants, and children (WIC).",
+    //   li2: "Call the Philadelphia Corporation for Aging at <a href='tel:215-765-9040'>(215) 765-9040</a> to ask about the program for seniors.",
+    // },
+    // section4Title: "For farmers' market and farm stand operators",
+    // ul4: {
+    //   li1: "<a href='mailto:jennifer.aquilante@phila.gov'>Email Jennifer Aquilante</a> to add your market or stand to the finder.",
+    //   li2: "Learn more about how to <a href='https://www.phila.gov/services/permits-violations-licenses/get-a-license/business-licenses/food-businesses/operate-a-farmers-market/' target='_blank'>operate a farmers' market in Philadelphia</a>.",
+    // },
   },
 };

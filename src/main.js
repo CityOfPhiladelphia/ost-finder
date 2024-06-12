@@ -46,10 +46,16 @@ pinboard({
   i18n: i18n.i18n,
   app: {
     type: 'ost',
+    logoSrc: require('@/assets/beta_01.png'),
+    logoLink: 'none',
+    logoWidth: 50,
+    logoAlt: 'City of Philadelphia',
   },
   gtag: {
     category: 'rf-ost',
   },
+  // anySearch: true,
+  allowZipcodeSearch: true,
   allowPrint: true,
   showBuffers: true,
   resetDataOnGeocode: true,
@@ -58,28 +64,41 @@ pinboard({
   searchBar: {
     searchTypes: [
       'address',
+      'zipcode',
       'keyword',
     ],
     searchDistance: 3,
-    fuseThreshold: 0.4,
+    fuseThreshold: 0.45,
   },
   tags: {
     type: 'fieldValues',
     tags: [
       {
         type: 'value',
-        field: 'name',
+        field: 'ProgramLocatorActivityName',
+      },
+      {
+        type: 'value',
+        field: 'school',
       },
     ],
   },
   locationInfo: {
     siteName: function(item) {
+      return item.attributes.ProgramLocatorActivityName;
       // return item.attributes.servicename;
-      return item.attributes.programname;
+      // return item.attributes.programname;
     },
   },
   customComps,
-  // hiddenRefine: {
+  hiddenRefine: {
+    SchoolYearOrSummer(item) {
+      // return item.attributes.SchoolYearOrSummer != 'School Year' && item.attributes.isInPublicProgramDirectory == "1";
+      return item.attributes.ProgramLocatorActivityName !== ''
+        && item.attributes.ProgramLocatorActivityName !== null
+        && item.attributes.isInPublicProgramDirectory == "1";
+    },
+  },
   //   START_DATE: function(item) {
   //     // let today = format(new Date(), 'MM/dd/yyyy');
   //     let today = Date.parse(new Date());
@@ -109,6 +128,118 @@ pinboard({
     type: 'multipleFieldGroups',
     columns: true,
     multipleFieldGroups: {
+      term: {
+        columns: 1,
+        checkbox: {
+          'summer': {
+            unique_key: 'term_summer',
+            i18n_key: 'term.summer',
+            value: function(item) {
+              return item.attributes.SchoolYearOrSummer === 'Summer';
+            },
+          },
+          'schoolYear': {
+            unique_key: 'term_schoolYear',
+            i18n_key: 'term.schoolYear',
+            value: function(item) {
+              return item.attributes.SchoolYearOrSummer === 'School Year';
+            },
+          },
+        },
+      },
+      achieversAndC2L: {
+        columns: 1,
+        checkbox: {
+          'isAchievers': {
+            unique_key: 'achieversAndC2L_isAchievers',
+            i18n_key: 'achieversAndC2L.isAchievers',
+            value: function(item) {
+              return item.attributes.isAcademicAchievers != null;
+            },
+          },
+          'isC2L': {
+            unique_key: 'achieversAndC2L_isC2L',
+            i18n_key: 'achieversAndC2L.isC2L',
+            value: function(item) {
+              return item.attributes.isCareerConnected != null;
+            },
+          },
+        },
+      },
+      registration: {
+        columns: 1,
+        checkbox: {
+          'open': {
+            unique_key: 'registration_open',
+            i18n_key: 'registration.open',
+            value: function(item) {
+              let value;
+              if (item.attributes.RegistrationPeriodEndDate != null) {
+                // console.log('new Date():', new Date(), 'new Date(item.attributes.RegistrationPeriodEndDate):', new Date(item.attributes.RegistrationPeriodEndDate));
+                value = new Date() < new Date(item.attributes.RegistrationPeriodEndDate);
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'required': {
+            unique_key: 'registration_required',
+            i18n_key: 'registration.required',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                value = item.attributes.REGISTRATION.split(', ').includes('Registration required');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'dropIn': {
+            unique_key: 'registration_dropIn',
+            i18n_key: 'registration.dropIn',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Drop-in');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'other': {
+            unique_key: 'registration_other',
+            i18n_key: 'registration.other',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Other');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+          'students': {
+            unique_key: 'registration_students',
+            i18n_key: 'registration.students',
+            value: function(item) {
+              let value;
+              if (item.attributes.REGISTRATION) {
+                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
+                value = item.attributes.REGISTRATION.split(', ').includes('Program only open to students attending this school');
+              } else {
+                value = false;
+              }
+              return value;
+            },
+          },
+        },
+      },
       age: {
         columns: 1,
         checkbox: {
@@ -300,58 +431,56 @@ pinboard({
           },
         },
       },
-      registration: {
-        columns: 1,
+      fee: {
+        columns: 1, 
         checkbox: {
-          'required': {
-            unique_key: 'registration_required',
-            i18n_key: 'registration.required',
+          'free': {
+            unique_key: 'fee_free',
+            i18n_key: 'fee.free',
             value: function(item) {
               let value;
-              if (item.attributes.REGISTRATION) {
-                value = item.attributes.REGISTRATION.split(', ').includes('Registration required');
+              if (item.attributes.COSTS != null) {
+                // console.log("item.attributes.COSTS.split(', '):", item.attributes.COSTS.split(', '));
+                value = item.attributes.COSTS.split(', ').includes('Free');
               } else {
                 value = false;
               }
               return value;
             },
           },
-          'dropIn': {
-            unique_key: 'registration_dropIn',
-            i18n_key: 'registration.dropIn',
+          'ccis': {
+            unique_key: 'fee_ccis',
+            i18n_key: 'fee.ccis',
             value: function(item) {
               let value;
-              if (item.attributes.REGISTRATION) {
-                console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Drop-in');
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('CCIS Approved');
               } else {
                 value = false;
               }
               return value;
             },
           },
-          'other': {
-            unique_key: 'registration_other',
-            i18n_key: 'registration.other',
+          'feeBased': {
+            unique_key: 'fee_feeBased',
+            i18n_key: 'fee.feeBased',
             value: function(item) {
               let value;
-              if (item.attributes.REGISTRATION) {
-                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Other');
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('Fee based');
               } else {
                 value = false;
               }
               return value;
             },
           },
-          'students': {
-            unique_key: 'registration_students',
-            i18n_key: 'registration.students',
+          'scholarships': {
+            unique_key: 'fee_scholarships',
+            i18n_key: 'fee.scholarships',
             value: function(item) {
               let value;
-              if (item.attributes.REGISTRATION) {
-                // console.log("item.attributes.REGISTRATION.split(', '):", item.attributes.REGISTRATION.split(', '));
-                value = item.attributes.REGISTRATION.split(', ').includes('Program only open to students attending this school');
+              if (item.attributes.COSTS != null) {
+                value = item.attributes.COSTS.split(', ').includes('Scholarships/Financial Assistance');
               } else {
                 value = false;
               }
@@ -360,6 +489,63 @@ pinboard({
           },
         },
       },
+      // transportation: {
+      //   columns: 1,
+      //   checkbox: {
+      //     'noTransportationProvided': {
+      //       unique_key: 'transportation_noTransportationProvided',
+      //       i18n_key: 'transportation.noTransportationProvided',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('No transportation provided');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'accessible': {
+      //       unique_key: 'transportation_accessible',
+      //       i18n_key: 'transportation.accessible',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Accessible bus/Subway Stops');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'toSite': {
+      //       unique_key: 'transportation_toSite',
+      //       i18n_key: 'transportation.toSite',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided to site');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //     'fromSite': {
+      //       unique_key: 'transportation_fromSite',
+      //       i18n_key: 'transportation.fromSite',
+      //       value: function(item) {
+      //         let value;
+      //         if (item.attributes.TRANSPORTATION != null) {
+      //           value = item.attributes.TRANSPORTATION.split(', ').includes('Transportation provided from site to home');
+      //         } else {
+      //           value = false;
+      //         }
+      //         return value;
+      //       },
+      //     },
+      //   },
+      // },
       
     },
   },
@@ -390,7 +576,7 @@ pinboard({
     },
     {
       type: "native",
-      href: "https://www.phila.gov/farmers-markets/",
+      href: "https://www.phila.gov/ost/program-locator/#/",
       text: "about",
     },
     {

@@ -61,7 +61,7 @@
         </div>
 
         <div
-          v-if="item.attributes.FACEBOOK"
+          v-if="item.attributes.FACEBOOK && item.attributes.FACEBOOK !== 'Lloyd Hall'"
           class="columns is-mobile website-div"
         >
           <div class="column is-1">
@@ -77,9 +77,7 @@
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="column is-6">
         <div
           v-if="item.attributes.INSTAGRAM"
           class="columns is-mobile website-div"
@@ -115,127 +113,143 @@
             </a>
           </div>
         </div>
-
-        <!-- <div class="columns is-mobile">
-          <div
-            class="column is-1"
-          >
-            <font-awesome-icon icon="car-bus" />
-          </div>
-          <div class="column">
-            <div v-if="item.attributes.transit_bus">
-              <b>{{ $t('transit.bus') + ': ' }}</b>
-              {{ item.attributes.transit_bus }}
-            </div>
-            <div v-if="item.attributes.transit_subway && Array.isArray(item.attributes.transit_subway)">
-              <b>{{ $t('transit.subway.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of item.attributes.transit_subway"
-                v-if="item.attributes.transit_subway && Array.isArray(item.attributes.transit_subway)"
-                :key="index"
-              >
-                {{ subwayValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="item.attributes.transit_regional_rail">
-              <b>{{ $t('transit.regRail.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of item.attributes.transit_regional_rail.split(',')"
-                :key="index"
-              >
-                {{ trainValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="item.attributes.transit_trolley">
-              <b>{{ $t('transit.trolley') + ': ' }}</b>
-              {{ item.attributes.transit_trolley }}
-            </div>
-            <div v-if="parking">
-              <b>{{ $t('transit.car.label') + ': ' }}</b>
-              <span
-                v-for="(option, index) of parking"
-                :key="index"
-              >
-                {{ parkingValueWithComma(option, index) }}
-              </span>
-            </div>
-            <div v-if="!item.attributes.transit_parking && !item.attributes.transit_trolley && !item.attributes.transit_regional_rail && !item.attributes.transit_subway && !item.attributes.transit_bus">
-              <span>
-                {{ $t('noInfo') }}
-              </span>
-            </div>
-          </div>
-        </div> -->
       </div>
-    </div>
 
-    <!-- <h3 class="section-heading">
-      {{ $t('hours') }}
-    </h3>
-    <vue-good-table
-      :columns="days.columns"
-      :rows="days.rows"
-      :sort-options="{ enabled: false }"
-      style-class="vgt-table condensed"
-    >
-      <template
-        slot="table-column"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.label =='Days'"
-          class="table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </span>
-        <span
-          v-if="props.column.label =='Schedule'"
-          class="table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </span>
-      </template>
+      <div class="column is-6">
 
-      <template
-        slot="table-row"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.field == 'label'"
-          class="table-text"
-        >
-          {{ $t(props.row.days) }}
-        </span>
         <div
-          v-if="props.column.field == 'value'"
-          class="table-text"
+          v-if="item.attributes.RemoteProgrammingSelect"
+          class="columns is-mobile"
         >
-          {{ props.row.schedule }}
+          <div class="column is-11">
+            <b>{{ $t('remoteProgram') }}:</b> {{ item.attributes.RemoteProgrammingSelect }}
+          </div>
         </div>
-      </template>
-    </vue-good-table>
 
-    <div class="exceptions-holder">
-      <div
-        v-for="(exception, index) of exceptionsList"
-        :key="index"
-      >
-        {{ parseException(exception, index+1) }}
+        <div
+          v-if="item.attributes.REGISTRATION"
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('registration.category') }}:</b> {{ item.attributes.REGISTRATION }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('registration.start') }}:</b> {{ formatDate2(item.attributes.RegistrationPeriodStartDate) }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('registration.end') }}:</b> {{ formatDate2(item.attributes.RegistrationPeriodEndDate) }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('programRunsFrom') }}:</b> {{ datefnsFormat(item.attributes.begindate) }} - {{ datefnsFormat(item.attributes.enddate) }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('daysOffered.category') }}:</b> {{ item.attributes.daynames }}
+          </div>
+        </div>
+
+        <div
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('timeOffered') }}:</b> {{ item.attributes.ProgramDirectoryStartTimeSelect }} - {{ item.attributes.ProgramDirectoryEndTimeSelect }}
+          </div>
+        </div>
+        
       </div>
-    </div> -->
+    </div>
 
-    <h3 class="section-heading">
-      Focus Areas
+    <h3 v-if="this.hasFocusAreas" class="section-heading">
+      {{ $t('focusArea.plural') }}
     </h3>
-    <!-- <div v-html="item.attributes.subcats" /> -->
-    <div>
-    {{ item.attributes.subcats }}
+    <div v-if="item.attributes.artsAndCulture && item.attributes.artsAndCulture.length">
+      <b>Arts and Culture:</b>{{ this.artsAndCulture }}
+    </div>
+    <div v-if="item.attributes.health && item.attributes.health.length">
+      <b>Sports, Health and Wellness Activities:</b>{{ this.health }}
+    </div>
+    <div v-if="item.attributes.characterDevelopment && item.attributes.characterDevelopment.length">
+      <b>Character Education/Positive Youth Development:</b>{{ this.characterDevelopment }}
+    </div>
+    <div v-if="item.attributes.communityService && item.attributes.communityService.length">
+      <b>Community Service Learning:</b>{{ this.communityService }}
+    </div>
+    <div v-if="item.attributes.stem && item.attributes.stem.length">
+      <b>STEM/STEAM:</b>{{ this.stem }}
+    </div>
+    <div v-if="item.attributes.collegeCareer && item.attributes.collegeCareer.length">
+      <b>College and Career Readiness:</b>{{ this.collegeCareer }}
     </div>
 
     <h3 class="section-heading">
-      Details
+      {{ $t('details') }}
     </h3>
     <div v-html="item.attributes.programdescription" />
+
+    <br>
+
+    <div v-if="getAges(item.attributes) !== null">
+      <b>{{ $t('ages') }}:</b> {{ getAges(item.attributes) }}
+    </div>
+
+    <div v-if="getGrades(item.attributes) !== null">
+      <b>{{ $t('grades') }}:</b> {{ getGrades(item.attributes) }}
+    </div>
+
+    <div v-if="item.attributes.COSTS !== null">
+      <b>{{ $t('costs') }}:</b> {{ item.attributes.COSTS }}
+    </div>
+
+    <div v-if="item.attributes.FEE_AMOUNT !== null">
+      <b>{{ $t('feeAmount') }}:</b> ${{ item.attributes.FEE_AMOUNT }}
+    </div>
+
+    <div v-if="item.attributes.FEE_FREQUENCY !== null">
+      <b>{{ $t('feeFrequency') }}:</b> {{ item.attributes.FEE_FREQUENCY }}
+    </div>
+
+    <div v-if="item.attributes.FEE_DESCRIPTION !== null">
+      <b>{{ $t('feeDescription') }}:</b> {{ item.attributes.FEE_DESCRIPTION }}
+    </div>
+
+    <div v-if="item.attributes.SchoolYearOrSummer !== null">
+      <b>{{ $t('term.category') }}:</b> {{ item.attributes.SchoolYearOrSummer }}
+    </div>
+
+    <div v-if="item.attributes.SERVICES !== null">
+      <b>{{ $t('services') }}:</b> {{ item.attributes.SERVICES }}
+    </div>
+
+    <div v-if="item.attributes.TRANSPORTATION !== null">
+      <b>{{ $t('transportation.category') }}:</b> {{ item.attributes.TRANSPORTATION }}
+    </div>
+
+    <div v-if="item.attributes.MEALS !== null">
+      <b>{{ $t('meals') }}:</b> {{ item.attributes.MEALS }}
+    </div>
+
+    <div v-if="item.attributes.SPECIAL_POPULATION_SERVED !== null">
+      <b>{{ $t('specialPopulations') }}:</b> {{ item.attributes.SPECIAL_POPULATION_SERVED }}
+    </div>
 
     <!-- <h3 class="section-heading">
       {{ $t('paymentOptions') }}
@@ -323,6 +337,69 @@ export default {
     },
   },
   computed: {
+    hasFocusAreas() {
+      return this.item.attributes.isArt || this.item.attributes.isHealth || this.item.attributes.isCharacterDevelopment || this.item.attributes.isCommunityService || this.item.attributes.isSTEM || this.item.attributes.isCareerConnected;
+    },
+    artsAndCulture() {
+      let value = ' ';
+      if (this.item.attributes['Arts and Culture']) {
+        for (let i=0; i<this.item.attributes['Arts and Culture'].length-1; i++) {
+          value += this.item.attributes['Arts and Culture'][i] + ', ';
+        }
+        value += this.item.attributes['Arts and Culture'][this.item.attributes['Arts and Culture'].length-1];
+      }
+      return value;
+    },
+    health() {
+      let value = ' ';
+      if (this.item.attributes['Sports, Health and Wellness Activities']) {
+        for (let i=0; i<this.item.attributes['Sports, Health and Wellness Activities'].length-1; i++) {
+          value += this.item.attributes['Sports, Health and Wellness Activities'][i] + ', ';
+        }
+        value += this.item.attributes['Sports, Health and Wellness Activities'][this.item.attributes['Sports, Health and Wellness Activities'].length-1];
+      }
+      return value;
+    },
+    characterDevelopment() {
+      let value = ' ';
+      if (this.item.attributes['Character Education/Positive Youth Development']) {
+        for (let i=0; i<this.item.attributes['Character Education/Positive Youth Development'].length-1; i++) {
+          value += this.item.attributes['Character Education/Positive Youth Development'][i] + ', ';
+        }
+        value += this.item.attributes['Character Education/Positive Youth Development'][this.item.attributes['Character Education/Positive Youth Development'].length-1];
+      }
+      return value;
+    },
+    communityService() {
+      let value = ' ';
+      if (this.item.attributes['Community Service Learning']) {
+        for (let i=0; i<this.item.attributes['Community Service Learning'].length-1; i++) {
+          value += this.item.attributes['Community Service Learning'][i] + ', ';
+        }
+        value += this.item.attributes['Community Service Learning'][this.item.attributes['Community Service Learning'].length-1];
+      }
+      return value;
+    },
+    stem() {
+      let value = ' ';
+      if (this.item.attributes['STEM/STEAM']) {
+        for (let i=0; i<this.item.attributes['STEM/STEAM'].length-1; i++) {
+          value += this.item.attributes['STEM/STEAM'][i] + ', ';
+        }
+        value += this.item.attributes['STEM/STEAM'][this.item.attributes['STEM/STEAM'].length-1];
+      }
+      return value;
+    },
+    collegeCareer() {
+      let value = ' ';
+      if (this.item.attributes['College and Career Readiness']) {
+        for (let i=0; i<this.item.attributes['College and Career Readiness'].length-1; i++) {
+          value += this.item.attributes['College and Career Readiness'][i] + ', ';
+        }
+        value += this.item.attributes['College and Career Readiness'][this.item.attributes['College and Career Readiness'].length-1];
+      }
+      return value;
+    },
     showTwitter() {
       let value = false;
       let badValues = [ 'N/A', 'n/a', 'na', 'NA', 'Na', 'nA', 'none' ];
@@ -490,6 +567,28 @@ export default {
     // console.log('ExpandCollapseContent.vue mounted, this.item.attributes.transit_subway.length:', this.item.attributes.transit_subway.length, 'this.item.attributes.transit_subway:', this.item.attributes.transit_subway);
   },
   methods: {
+    getAges(item) {
+      // console.log('getAges is running, item:', item);
+      let options = [ 'isUnder5', 'is5to10', 'is11to13', 'is14to18', 'isAbove18' ];
+      let finalAges = [];
+      for (let option of options) {
+        if (item[option] == '1') {
+          finalAges.push(this.$i18n.messages[this.i18nLocale].age[option]);
+        }
+      }
+      return finalAges.join(', ');
+    },
+    getGrades(item) {
+      console.log('getGrades is running, item:', item);
+      let options = [ 'serviceGradeLevelPreK', 'serviceGradeLevelK', 'serviceGradeLevel6', 'serviceGradeLevel9' ];
+      let finalGrades = [];
+      for (let option of options) {
+        if (item[option] == '1') {
+          finalGrades.push(this.$i18n.messages[this.i18nLocale].grade[option]);
+        }
+      }
+      return finalGrades.join(', ');
+    },
     parseException(exception, index) {
       let parsedException = '';
       for (let i=0; i<index; i++) {
@@ -502,8 +601,40 @@ export default {
       }
       return parsedException;
     },
+    datefnsFormat_str(date) {
+      console.log('datefnsFormat_str is running, date:', date);
+      let value;
+      if (date) {
+        value = format(parseISO(date), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
+    datefnsFormat(date) {
+      console.log('datefnsFormat is running, date:', date);
+      let value;
+      if (date) {
+        value = format(parseISO(date), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
+    formatDate2(date) {
+      let value;
+      if (date) {
+        let splitDate = date.split('/');
+        if (splitDate[0].length == 1) {
+          splitDate[0] = '0' + splitDate[0];
+        }
+        if (splitDate[1].length == 1) {
+          splitDate[1] = '0' + splitDate[1];
+        }
+        let newDate = splitDate[2] + '-' + splitDate[0] + '-' + splitDate[1] + 'T00:00:00';
+        console.log('formatDate2 is running, date:', date, 'newDate:', newDate);
+        value = format(parseISO(newDate), 'EEEE, MMM d, yyyy');
+      }
+      return value;
+    },
     formatDate(month, day) {
-      // console.log('formatDate is running, month:', month, 'day:', day, 'this.i18nLocale:', this.i18nLocale);
+      console.log('formatDate is running, month:', month, 'day:', day, 'this.i18nLocale:', this.i18nLocale);
       let monthNumber = {
         January: 0,
         February: 1,
