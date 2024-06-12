@@ -180,30 +180,24 @@ export default {
   holidayClosure: "This site is currently temporarily closed for ",
   futureHolidayClosure: "This site will by temporarily closed for ",
   introPage: {
-    section1Title: "Find an out of school time program",
-    p0: "The Out-of-School programs (“OST Program(s)”) are not operated, endorsed, or \
-    controlled by the City of Philadelphia (“City”). The City is providing this list of \
-    programs for your convenience only. If you use any program links, you will leave \
-    the City’s website and be directed to a website for that particular OST Program.",
+    section1Title: "Find an Out-Of-School Time activity",
+    p0: 'Out-of-School Time (OST) is the time that a child or youth spends in after school or summer programming.\
+      In Philadelphia, OST programs are provided for young people in grades pre-K through 12.',
+    p2: 'Programs are available throughout the city with a variety of activities to choose from, including:',
     // p1: "Use this tool to find opening dates, hours, payment options, and more about each location.",
     section2Title: "Before you go",
-    p2: "The City provides no warranties, promises, and/or representations of any kind, \
-    expressed or implied, as to the nature, standard, or accuracy provided by these OST \
-    Programs, nor to the suitability or otherwise information to your particular \
-    circumstances. The City does not endorse, approve, or control the information contained \
-    in the program websites. The information is provided only on an “as is” and “with all \
-    faults” basis.",
-    // ul1: {
-    //   li1: "Verify whether the market will be open during bad weather.",
-    //   li2: "Ask about pre-ordering or online payments.",
-    //   li3: "Learn more about free and reduced-price produce options.",
-    // },
+    // p2: "The City provides no warranties, promises, and/or representations of any kind, \
+    // expressed or implied, as to the nature, standard, or accuracy provided by these OST \
+    // Programs, nor to the suitability or otherwise information to your particular \
+    // circumstances. The City does not endorse, approve, or control the information contained \
+    // in the program websites. The information is provided only on an “as is” and “with all \
+    // faults” basis.",
+    ul1: {
+      li1: "Creative and Performing Arts",
+      li2: "Athletics and Health",
+      li3: "Science, Technology, Engineering and Math (STEM)",
+    },
     // section3Title: "Programs to help pay for food",
-    p3: "By clicking on any external links, you acknowledge that in no event shall the \
-    City be liable to you or to any other person or entity for any direct, indirect, \
-    special, incidental, or consequential or other damage, cost, or expense arising out \
-    of or in relation to the enrollment in these OST Programs or use of any of the OST \
-    Programs’ websites.",
     // ul2: {
     //   li1: "The Supplemental Nutrition Assistance Program (SNAP) helps low-income people pay for groceries. Call the local SNAP hotline at <a href='tel:215-765-9040'>(215) 430-0556</a> to find out if you qualify.",
     //   li2: "Food Bucks help SNAP users save money on fruits and vegetable. Get $2 in Food Bucks for every $5 you spend at participating markets. Learn more from <a href='https://thefoodtrust.org/what-we-do/food-bucks/' target='_blank'>The Food Trust.</a>",

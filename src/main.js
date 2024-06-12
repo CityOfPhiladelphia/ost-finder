@@ -23,6 +23,8 @@ import { faCarBus } from '@fortawesome/pro-solid-svg-icons/faCarBus';
 
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus);
 
+import './assets/scss/main.scss';
+
 // import pinboard
 import pinboard from '@phila/pinboard/src/main.js';
 
@@ -46,9 +48,9 @@ pinboard({
   i18n: i18n.i18n,
   app: {
     type: 'ost',
-    logoSrc: require('@/assets/beta_01.png'),
+    logoSrc: require('@/assets/city-of-phila-beta.png'),
     logoLink: 'none',
-    logoWidth: 50,
+    // logoWidth: 50,
     logoAlt: 'City of Philadelphia',
   },
   gtag: {
@@ -601,6 +603,29 @@ pinboard({
     mobileRadius: 12,
     size: 16,
     mobileSize: 20,
+  },
+  alerts: {
+    modal: {
+      enabled: true,
+      header: 'Disclaimer',
+      body: '<p>The Out-of-School programs (“OST Program(s)”) are not operated, endorsed, or \
+        controlled by the City of Philadelphia (“City”). The City is providing this list of \
+        programs for your convenience only. If you use any program links, you will leave \
+        the City’s website and be directed to a website for that particular OST Program.</p>\
+<br>\
+        <p>The City provides no warranties, promises, and/or representations of any kind, \
+        expressed or implied, as to the nature, standard, or accuracy provided by these OST \
+        Programs, nor to the suitability or otherwise information to your particular \
+        circumstances. The City does not endorse, approve, or control the information contained \
+        in the program websites. The information is provided only on an “as is” and “with all \
+        faults” basis.</p>\
+<br>\
+        <p>By clicking on any external links, you acknowledge that in no event shall the \
+        City be liable to you or to any other person or entity for any direct, indirect, \
+        special, incidental, or consequential or other damage, cost, or expense arising out \
+        of or in relation to the enrollment in these OST Programs or use of any of the OST \
+        Programs’ websites.</p>',
+      },
   },
   map: {
     type: 'mapbox',

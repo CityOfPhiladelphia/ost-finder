@@ -11,7 +11,17 @@
       </h3>
 
       <p v-html="$t('introPage.p0')" />
-      <!-- <p v-html="$t('introPage.p1')" /> -->
+      
+      <p v-html="$t('introPage.p2')" />
+
+      <ul>
+        <li
+          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
+          :key="index"
+          class="intro-list-item"
+          v-html="$t('introPage.ul1.' + index)"
+        />
+      </ul>
 
       <div class="has-text-centered container mb-1 mt-5">
         <button
@@ -21,21 +31,9 @@
         />
       </div>
 
-      <!-- <h3>
-        {{ $t('introPage.section2Title') }}
-      </h3> -->
+      
 
-      <p v-html="$t('introPage.p2')" />
-      <p v-html="$t('introPage.p3')" />
-
-      <!-- <ul>
-        <li
-          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
-          :key="index"
-          class="intro-list-item"
-          v-html="$t('introPage.ul1.' + index)"
-        />
-      </ul>
+      <!--
 
       <h3>
         {{ $t('introPage.section3Title') }}
