@@ -181,22 +181,22 @@
     <h3 v-if="this.hasFocusAreas" class="section-heading">
       {{ $t('focusArea.plural') }}
     </h3>
-    <div v-if="item.attributes.artsAndCulture && item.attributes.artsAndCulture.length">
+    <div v-if="this.artsAndCulture && this.artsAndCulture.length">
       <b>Arts and Culture:</b>{{ this.artsAndCulture }}
     </div>
-    <div v-if="item.attributes.health && item.attributes.health.length">
+    <div v-if="this.health && this.health.length">
       <b>Sports, Health and Wellness Activities:</b>{{ this.health }}
     </div>
-    <div v-if="item.attributes.characterDevelopment && item.attributes.characterDevelopment.length">
+    <div v-if="this.characterDevelopment && this.characterDevelopment.length">
       <b>Character Education/Positive Youth Development:</b>{{ this.characterDevelopment }}
     </div>
-    <div v-if="item.attributes.communityService && item.attributes.communityService.length">
+    <div v-if="this.communityService && this.communityService.length">
       <b>Community Service Learning:</b>{{ this.communityService }}
     </div>
-    <div v-if="item.attributes.stem && item.attributes.stem.length">
+    <div v-if="this.stem && this.stem.length">
       <b>STEM/STEAM:</b>{{ this.stem }}
     </div>
-    <div v-if="item.attributes.collegeCareer && item.attributes.collegeCareer.length">
+    <div v-if="this.collegeCareer && this.collegeCareer.length">
       <b>College and Career Readiness:</b>{{ this.collegeCareer }}
     </div>
 
