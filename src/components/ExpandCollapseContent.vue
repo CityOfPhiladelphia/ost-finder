@@ -181,22 +181,22 @@
     <h3 v-if="this.hasFocusAreas" class="section-heading">
       {{ $t('focusArea.plural') }}
     </h3>
-    <div v-if="this.artsAndCulture && this.artsAndCulture.length">
+    <div v-if="this.artsAndCulture && this.artsAndCulture.length > 1">
       <b>Arts and Culture:</b>{{ this.artsAndCulture }}
     </div>
-    <div v-if="this.health && this.health.length">
+    <div v-if="this.health && this.health.length > 1">
       <b>Sports, Health and Wellness Activities:</b>{{ this.health }}
     </div>
-    <div v-if="this.characterDevelopment && this.characterDevelopment.length">
+    <div v-if="this.characterDevelopment && this.characterDevelopment.length > 1">
       <b>Character Education/Positive Youth Development:</b>{{ this.characterDevelopment }}
     </div>
-    <div v-if="this.communityService && this.communityService.length">
+    <div v-if="this.communityService && this.communityService.length > 1">
       <b>Community Service Learning:</b>{{ this.communityService }}
     </div>
-    <div v-if="this.stem && this.stem.length">
+    <div v-if="this.stem && this.stem.length > 1">
       <b>STEM/STEAM:</b>{{ this.stem }}
     </div>
-    <div v-if="this.collegeCareer && this.collegeCareer.length">
+    <div v-if="this.collegeCareer && this.collegeCareer.length > 1">
       <b>College and Career Readiness:</b>{{ this.collegeCareer }}
     </div>
 
