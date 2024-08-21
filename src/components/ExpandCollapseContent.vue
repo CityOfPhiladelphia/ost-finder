@@ -14,7 +14,7 @@
           </div>
           <div class="column is-11">
             {{ item.attributes.address }}<br>
-            Philadelphia, PA {{ item.attributes.MAILING_ZIP_CODE }}<br>
+            Philadelphia, PA {{ item.attributes.zip }}<br>
           </div>
         </div>
 
