@@ -173,7 +173,7 @@ const allTwitter = computed(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 
 .main-greeting {
   padding: 1rem;
