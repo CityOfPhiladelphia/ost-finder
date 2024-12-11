@@ -5,8 +5,6 @@
 // (we might not need to use axios with new vue async tools)
 // if that is not needed, we can move this info to main.js
 
-console.log('test');
-
 import isMac from './util/is-mac';
 if (isMac()) {
   import('./assets/mac-style.scss')
@@ -27,12 +25,10 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus, faFacebook, faTwitter, faInstagram);
 
-// import './assets/scss/main.scss';
-
 // import pinboard
 // import pinboard from '@phila/pinboard';
 import pinboard from '../node_modules/@phila/pinboard/src/main.js';
-import '../node_modules/@phila/pinboard/dist/style.css';
+// import '../node_modules/@phila/pinboard/dist/style.css';
 
 // data-sources
 import ost from './data-sources/ost';

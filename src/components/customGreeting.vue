@@ -3,11 +3,12 @@
 import $config from '../main.js';
 
 const props = defineProps({
-  'message': {
-    type: String,
-    default: function() {
-      return 'defaultMessage';
-    },
+  database: {
+    type: Array,
+  },
+  isMobile: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -122,11 +123,17 @@ const allTwitter = computed(() => {
         />
       </ul>
 
-      <div class="has-text-centered container mb-1 mt-5">
+      <div class="has-text-centered container">
         <button
           class="button greeting-button"
           @click="$emit('view-list')"
           v-html="$t('app.viewList')"
+        />
+        <button
+          v-if="isMobile"
+          class="button greeting-button"
+          @click="$emit('view-map')"
+          v-html="$t('app.viewMap')"
         />
       </div>
 
@@ -185,10 +192,11 @@ const allTwitter = computed(() => {
   font-size: 1rem;
   color: white;
   cursor: pointer;
+  margin: 1rem;
 }
 
 .greeting-button:hover {
-  border-color: #2176d2 !important;
+  background-color: #444444 !important;
 }
 
 .section-header {
