@@ -204,7 +204,8 @@
     <h3 class="section-heading">
       {{ $t('details') }}
     </h3>
-    <div v-html="item.attributes.programdescription" />
+    <div v-html="item.attributes.servicedesc" />
+    <!-- <div v-html="item.attributes.programdescription" /> -->
 
     <br>
 
