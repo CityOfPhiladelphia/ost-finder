@@ -96,69 +96,8 @@ const showTwitter = computed(() => {
   return value;
 });
 
-const parking = computed(() => {
-  let value;
-  if (props.item.properties.transit_parking) {
-    console.log('parking computed, props.item.properties.transit_parking.split():', props.item.properties.transit_parking.split(','));
-    value = props.item.properties.transit_parking.split(',');
-  }
-  return value;
-});
-
 const i18nLocale = computed(() => {
   return instance.appContext.config.globalProperties.$i18n.locale;
-});
-
-const paymentOptions = computed(() => {
-  let columns = [
-    {
-      label: 'Service',
-      i18nLabel: 'service',
-      field: 'service',
-      thClass: 'th-black-class',
-      tdClass: 'table-text',
-    },
-    {
-      label: 'Accepted',
-      i18nLabel: 'accepted',
-      field: 'value',
-      thClass: 'th-black-class',
-      tdClass: 'table-text',
-    },
-  ];
-  let rows = [
-    {
-      id: 1,
-      service: t('payment.SNAP'),
-      value: props.item.properties.properties.payment_snap,
-    },
-    {
-      id: 2,
-      service: t('payment.FMNP'),
-      value: props.item.properties.properties.payment_fmnp,
-    },
-    {
-      id: 3,
-      service: t('payment.foodBucks'),
-      value: props.item.properties.properties.payment_philly_food_bucks,
-    },
-    {
-      id: 6,
-      service: t('payment.lowCost') + ' ('+ t('seeBelow') + ')',
-      value: props.item.properties.properties.payment_other_low_cost != null ? 'Yes' : 'No',
-    },
-    {
-      id: 4,
-      service: t('payment.credit'),
-      value: props.item.properties.properties.payment_credit,
-    },
-    {
-      id: 5,
-      service: t('payment.cash'),
-      value: props.item.properties.properties.payment_cash,
-    },
-  ];
-  return { columns, rows };
 });
 
 const days = computed(() => {
@@ -207,54 +146,7 @@ const daysKey = computed(() => {
     'fri': 'Friday',
     'sat': 'Saturday',
     'sun': 'Sunday',
-    // 'MON': 'Monday',
-    // 'TUES': 'Tuesday',
-    // 'WED': 'Wednesday',
-    // 'THURS': 'Thursday',
-    // 'FRI': 'Friday',
-    // 'SAT': 'Saturday',
-    // 'SUN': 'Sunday',
   };
-});
-
-const exceptionsList = computed(() => {
-  // let days = [ 'MON', 'TUES', 'WED', 'THURS', 'FRI', 'SAT', 'SUN' ];
-  let days = [ 'mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun' ];
-  let exceptionsArray = [];
-  for (let day of days) {
-    let dayException = props.item['hours_' + day + '_exceptions'];
-    if (dayException) {
-      exceptionsArray.push(dayException);
-    }
-  }
-  let exceptionsSet = new Set(exceptionsArray);
-  let exceptionsSetArray = [ ...exceptionsSet ];
-  return exceptionsSetArray;
-});
-
-const exceptionsByDay = computed(() => {
-  // let days = [ 'MON', 'TUES', 'WED', 'THURS', 'FRI', 'SAT', 'SUN' ];
-  let days = [ 'mon', 'tues', 'wed', 'thurs', 'fri', 'sat', 'sun' ];
-  let exceptions = {};
-  for (let day of days) {
-    let dayException = props.item['hours_' + day + '_exceptions'];
-    if (dayException) {
-      exceptions[day] = dayException;
-    }
-  }
-  return exceptions;
-});
-
-const exceptionsWithCounter = computed(() => {
-  let exceptionsWithCounter = {};
-  for (let day = 0; day < Object.keys(exceptionsByDay.value).length; day++) {
-    exceptionsWithCounter[Object.keys(exceptionsByDay.value)[day]] = {
-      value: Object.keys(exceptionsByDay.value)[day],
-      counter: 1+exceptionsList.value.indexOf(exceptionsByDay.value[Object.keys(exceptionsByDay.value)[day]]),
-    };
-  }
-  console.log('exceptionsWithCounter:', exceptionsWithCounter);
-  return exceptionsWithCounter;
 });
 
 // methods
@@ -280,28 +172,6 @@ const getGrades = (item) => {
     }
   }
   return finalGrades.join(', ');
-};
-
-const parseException = (exception, index) => {
-  let parsedException = '';
-  for (let i=0; i<index; i++) {
-    parsedException += "*";
-  }
-  if (t('exceptions') && t('exceptions')[exception]) {
-    parsedException += ' ' + t(`exceptions${exception}`);
-  } else {
-    parsedException += ' ' + exception;
-  }
-  return parsedException;
-};
-
-const datefnsFormat_str = (date) => {
-  console.log('datefnsFormat_str is running, date:', date);
-  let value;
-  if (date) {
-    value = format(parseISO(date), 'EEEE, MMM d, yyyy');
-  }
-  return value;
 };
 
 const datefnsFormat = (date) => {
@@ -515,46 +385,6 @@ const makeTwitterHandle = (url) => {
     value = url;
   }
   return value;
-};
-
-const parseServiceList = (list) => {
-  const formattedService = list;
-  return formattedService;
-};
-
-const parseTagsList = (list) => {
-  const formattedTags = list.toLowerCase();
-  // console.log('parseTagsList is running, list:', list, 'formattedTags:', formattedTags);
-  // const formattedTags = list.slice().sort().join(", ");
-  return formattedTags;
-};
-
-const parkingValueWithComma = (option, index) => {
-  let parkingList = props.item.properties.properties.transit_parking.split(',');
-  // console.log('parkingValueWithComma is running, option:', option, 'index:', index, 'parkingList:', parkingList);
-  if (index !== parkingList.length-1) {
-    // console.log('parkinValueWithComma in if');
-    return t(`transit.car.${option.trim()}`) + ', ';
-  }
-  return t(`transit.car.${option.trim()}`);
-};
-
-const trainValueWithComma = (option, index) => {
-  let trainList = props.item.properties.properties.transit_regional_rail.split(',');
-  // console.log('in trainValueWithComma, trainList:', trainList, 'option:', option);
-  if (index !== trainList.length-1) {
-    return t(`transit.regRail.${option.trim()}`) + ', ';
-  }
-  return t(`transit.regRail.${option.trim()}`);
-};
-
-const subwayValueWithComma = (option, index) => {
-  // console.log('subwayValueWithComma is running, option:', option, 'index:', index);
-  let subwayList = props.item.properties.properties.transit_subway;
-  if (index !== subwayList.length-1) {
-    return t(`transit.subway.${option.trim()}`) + ', ';
-  }
-  return t(`transit.subway.${option.trim()}`);
 };
 
 </script>
@@ -813,56 +643,6 @@ const subwayValueWithComma = (option, index) => {
       <b>{{ $t('specialPopulations') }}:</b> {{ item.properties.SPECIAL_POPULATION_SERVED }}
     </div>
 
-    <!-- <h3 class="section-heading">
-      {{ $t('paymentOptions') }}
-    </h3>
-
-    <vue-good-table
-      :columns="paymentOptions.columns"
-      :rows="paymentOptions.rows"
-      :sort-options="{ enabled: false }"
-      style-class="vgt-table condensed"
-    >
-      <template
-        slot="table-column"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.label =='Service'"
-          class="table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </span>
-        <div
-          v-if="props.column.label =='Accepted'"
-          class="center table-header-text"
-        >
-          {{ $t(props.column.i18nLabel) }}
-        </div>
-      </template>
-
-      <template
-        slot="table-row"
-        slot-scope="props"
-      >
-        <span
-          v-if="props.column.field == 'service'"
-          class="table-text"
-        >
-          {{ $t(props.row.service) }}
-        </span>
-        <div
-          v-if="props.column.field == 'value'"
-          class="center"
-        >
-          <font-awesome-icon
-            v-if="props.row.value == 'Yes'"
-            :icon="['far', 'check']"
-          />
-        </div>
-      </template>
-    </vue-good-table> -->
-
     <div
       v-if="item.properties.payment_low_cost == 'Yes'"
       class="pt-4"
@@ -872,18 +652,6 @@ const subwayValueWithComma = (option, index) => {
   </div>
 </template>
 
-<style lang="scss">
-
-// .td-style {
-//   font-size: 14px !important;
-// }
-//
-// .td-textbox {
-//   padding-left: 2rem;
-// }
-//
-// .section-title {
-//   margin-bottom: .5rem !important;
-// }
+<style>
 
 </style>
