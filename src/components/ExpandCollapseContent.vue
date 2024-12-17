@@ -19,14 +19,14 @@
         </div>
 
         <div
-          v-if="item.attributes.PHONE"
+          v-if="item.attributes.program_phone"
           class="columns is-mobile"
         >
           <div class="column is-1">
             <font-awesome-icon icon="phone" />
           </div>
           <div class="column is-11">
-            {{ item.attributes.PHONE }}
+            {{ item.attributes.program_phone }}
           </div>
         </div>
 
@@ -116,7 +116,6 @@
       </div>
 
       <div class="column is-6">
-
         <div
           v-if="item.attributes.RemoteProgrammingSelect"
           class="columns is-mobile"
@@ -174,11 +173,13 @@
             <b>{{ $t('timeOffered') }}:</b> {{ item.attributes.ProgramDirectoryStartTimeSelect }} - {{ item.attributes.ProgramDirectoryEndTimeSelect }}
           </div>
         </div>
-        
       </div>
     </div>
 
-    <h3 v-if="this.hasFocusAreas" class="section-heading">
+    <h3
+      v-if="this.hasFocusAreas"
+      class="section-heading"
+    >
       {{ $t('focusArea.plural') }}
     </h3>
     <div v-if="this.artsAndCulture && this.artsAndCulture.length > 1">
@@ -317,14 +318,14 @@ import { fr, vi, ru, es, enUS } from 'date-fns/locale';
 import * as zh from 'date-fns/locale/zh-CN/index.js';
 
 import SharedFunctions from '@phila/pinboard/src/components/mixins/SharedFunctions.vue';
-import { VueGoodTable } from 'vue-good-table';
+// import { VueGoodTable } from 'vue-good-table';
 
 import PrintShareSection from '@phila/pinboard/src/components/PrintShareSection';
 
 export default {
   name: 'ExpandCollapseContent',
   components: {
-    VueGoodTable,
+    // VueGoodTable,
     PrintShareSection,
   },
   mixins: [ SharedFunctions ],
