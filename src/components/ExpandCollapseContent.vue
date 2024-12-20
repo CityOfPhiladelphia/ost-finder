@@ -26,7 +26,8 @@
             <font-awesome-icon icon="phone" />
           </div>
           <div class="column is-11">
-            {{ item.attributes.program_phone }}
+            <b>{{ $t('phone_org') }}:</b> {{ item.attributes.phone }}<br>
+            <b>{{ $t('phone_program') }}:</b> {{ item.attributes.program_phone }}
           </div>
         </div>
 
