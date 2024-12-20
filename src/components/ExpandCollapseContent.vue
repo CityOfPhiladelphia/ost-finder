@@ -26,8 +26,8 @@
             <font-awesome-icon icon="phone" />
           </div>
           <div class="column is-11">
-            <b>{{ $t('phone_org') }}:</b> {{ item.attributes.PHONE }}<br>
-            <b>{{ $t('phone_program') }}:</b> {{ item.attributes.program_phone }}
+            <b>{{ $t('phone_org') }}:</b> {{ transformPhone(item.attributes.PHONE) }}<br>
+            <b>{{ $t('phone_program') }}:</b> {{ transformPhone(item.attributes.program_phone) }}
           </div>
         </div>
 
@@ -570,6 +570,11 @@ export default {
     // console.log('ExpandCollapseContent.vue mounted, this.item.attributes.transit_subway.length:', this.item.attributes.transit_subway.length, 'this.item.attributes.transit_subway:', this.item.attributes.transit_subway);
   },
   methods: {
+    transformPhone(phoneNumber) {
+      var s2 = (""+phoneNumber).replace(/\D/g, '');
+      var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+      return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+    },
     getAges(item) {
       // console.log('getAges is running, item:', item);
       let options = [ 'isUnder5', 'is5to10', 'is11to13', 'is14to18', 'isAbove18' ];
