@@ -8,6 +8,8 @@ export default {
       all: 'Search by address, zipcode, or program name',
     },
   },
+  phone_org: 'Organization Phone',
+  phone_program: 'Activity Phone',
   eligibility: 'Eligibility',
   pickupDetails: 'Pickup details',
   beforeYouGo: 'Before you go',
