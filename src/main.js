@@ -26,9 +26,9 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus, faFacebook, faTwitter, faInstagram);
 
 // import pinboard
-// import pinboard from '@phila/pinboard';
-import pinboard from '../node_modules/@phila/pinboard/src/main.js';
-// import '../node_modules/@phila/pinboard/dist/style.css';
+import pinboard from '@phila/pinboard';
+// import pinboard from '../node_modules/@phila/pinboard/src/main.js';
+import '../node_modules/@phila/pinboard/dist/style.css';
 
 // data-sources
 import ost from './data-sources/ost';
