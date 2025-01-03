@@ -26,9 +26,9 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus, faFacebook, faTwitter, faInstagram);
 
 // import pinboard
-import pinboard from '@phila/pinboard';
-// import pinboard from '../node_modules/@phila/pinboard/src/main.js';
-import '../node_modules/@phila/pinboard/dist/style.css';
+// import pinboard from '@phila/pinboard';
+import pinboard from '../node_modules/@phila/pinboard/src/main.js';
+// import '../node_modules/@phila/pinboard/dist/style.css';
 
 // data-sources
 import ost from './data-sources/ost';
@@ -41,7 +41,7 @@ const customComps = markRaw({
 });
 
 import i18n from './i18n/i18n';
-console.log('main.js i18n:', i18n);
+if (import.meta.env.VITE_DEBUG) console.log('main.js i18n:', i18n);
 
 // import { format, parseISO, parse } from 'date-fns';
 
@@ -636,7 +636,7 @@ let $config = {
   ],
 };
 
-console.log('$config:', $config);
+if (import.meta.env.VITE_DEBUG) console.log('$config:', $config);
 
 pinboard($config);
 export default $config;
