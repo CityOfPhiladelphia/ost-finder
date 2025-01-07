@@ -390,11 +390,8 @@ const makeTwitterHandle = (url) => {
 </script>
 
 <template>
-  <!-- <div :class="isMobile ? 'main-content-mobile' : 'main-content'"> -->
-  <div class="main-content">
-    <!-- <print-share-section
-      :item="item"
-    /> -->
+  <div class="main-ec-content">
+    
     <div class="columns top-section">
       <div class="column is-6">
         <div

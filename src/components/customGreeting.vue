@@ -100,7 +100,7 @@ const allTwitter = computed(() => {
 
 <template>
   <div
-    class="custom-greeting content"
+    class="main-greeting"
   >
     <div
       id="main-area"
@@ -114,14 +114,16 @@ const allTwitter = computed(() => {
       
       <p v-html="$t('introPage.p2')" />
 
-      <ul>
-        <li
-          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
-          :key="index"
-          class="intro-list-item"
-          v-html="$t('introPage.ul1.' + index)"
-        />
-      </ul>
+      <div class="intro-list">
+        <ul>
+          <li
+            v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
+            :key="index"
+            class="intro-list-item"
+            v-html="$t('introPage.ul1.' + index)"
+          />
+        </ul>
+      </div>
 
       <div class="has-text-centered container">
         <button
@@ -179,78 +181,3 @@ const allTwitter = computed(() => {
     </div> <!-- end of main-area -->
   </div>
 </template>
-
-<style scoped>
-
-.main-greeting {
-  padding: 1rem;
-}
-
-.greeting-button {
-  background-color: #0f4d90 !important;
-  border-color: #0f4d90 !important;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  margin: 1rem;
-}
-
-.greeting-button:hover {
-  background-color: #444444 !important;
-}
-
-.section-header {
-    background-color: #0f4d90;
-    font-size: 16px;
-    color: white;
-    padding: 4px;
-    padding-left: 8px;
-  }
-
-.underlined {
-  text-decoration: underline;
-}
-
-.no-margin {
-  margin: 0px;
-}
-
-.big-cell-pad {
-  font-size: 14px;
-  padding: 4px;
-  margin: 0px !important;
-}
-
-.small-cell-pad {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 4px;
-  padding-left: 0px;
-}
-
-.custom-section {
-  font-size: 14px;
-  margin-left: 8px;
-  margin-top: 4px;
-  margin-top: 4px;
-  margin-bottom: 12px;
-}
-
-.custom-ul {
-  margin-left: 4rem;
-  font-size: 14px;
-}
-
-.is-rtl {
-  direction: rtl
-}
-
-li {
-  margin-top: 0px !important;
-}
-
-.intro-list-item {
-  line-height: 1.5rem;
-}
-
-</style>
