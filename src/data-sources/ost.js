@@ -13,7 +13,7 @@ export default {
         newData.features.push({
           attributes: datum,
           latlng: [ datum.latitude, datum.longitude ],
-        })
+        });
       }
       return newData;
     },
