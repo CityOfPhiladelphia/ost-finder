@@ -387,6 +387,12 @@ const makeTwitterHandle = (url) => {
   return value;
 };
 
+const transformPhone = (value) => {
+  var s2 = (""+value).replace(/\D/g, '');
+  var m = s2.match(/^(\d{3})(\d{3})(\d{4})$/);
+  return (!m) ? null : "(" + m[1] + ") " + m[2] + "-" + m[3];
+}
+
 </script>
 
 <template>
@@ -408,14 +414,15 @@ const makeTwitterHandle = (url) => {
         </div>
 
         <div
-          v-if="item.properties.PHONE"
+          v-if="item.properties.program_phone"
           class="columns is-mobile"
         >
           <div class="column is-1">
             <font-awesome-icon icon="phone" />
           </div>
           <div class="column is-11">
-            {{ item.properties.PHONE }}
+            <b>{{ $t('phone_org') }}:</b> {{ transformPhone(item.properties.PHONE) }}<br>
+            <b>{{ $t('phone_program') }}:</b> {{ transformPhone(item.properties.program_phone) }}
           </div>
         </div>
 
@@ -505,7 +512,6 @@ const makeTwitterHandle = (url) => {
       </div>
 
       <div class="column is-6">
-
         <div
           v-if="item.properties.RemoteProgrammingSelect"
           class="columns is-mobile"
@@ -563,11 +569,13 @@ const makeTwitterHandle = (url) => {
             <b>{{ $t('timeOffered') }}:</b> {{ item.properties.ProgramDirectoryStartTimeSelect }} - {{ item.properties.ProgramDirectoryEndTimeSelect }}
           </div>
         </div>
-        
       </div>
     </div>
 
-    <h3 v-if="hasFocusAreas" class="section-heading">
+    <h3
+      v-if="hasFocusAreas"
+      class="section-heading"
+    >
       {{ $t('focusArea.plural') }}
     </h3>
     <div v-if="artsAndCulture && artsAndCulture.value > 1">
@@ -592,7 +600,8 @@ const makeTwitterHandle = (url) => {
     <h3 class="section-heading">
       {{ $t('details') }}
     </h3>
-    <div v-html="item.properties.programdescription" />
+    <div v-html="item.properties.servicedesc" />
+    <!-- <div v-html="item.properties.programdescription" /> -->
 
     <br>
 
