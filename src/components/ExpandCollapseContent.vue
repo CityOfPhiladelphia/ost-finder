@@ -23,66 +23,66 @@ const hasFocusAreas = computed(() => {
 
 const artsAndCulture = computed(() => {
   let value = ' ';
-  if (props.item['Arts and Culture']) {
-    for (let i=0; i<props.item['Arts and Culture'].length-1; i++) {
-      value += props.item['Arts and Culture'][i] + ', ';
+  if (props.item.properties['Arts and Culture']) {
+    for (let i=0; i<props.item.properties['Arts and Culture'].length-1; i++) {
+      value += props.item.properties['Arts and Culture'][i] + ', ';
     }
-    value += props.item['Arts and Culture'][props.item['Arts and Culture'].length-1];
+    value += props.item.properties['Arts and Culture'][props.item.properties['Arts and Culture'].length-1];
   }
   return value;
 });
 
 const health = computed(() => {
   let value = ' ';
-  if (props.item['Sports, Health and Wellness Activities']) {
-    for (let i=0; i<props.item['Sports, Health and Wellness Activities'].length-1; i++) {
-      value += props.item['Sports, Health and Wellness Activities'][i] + ', ';
+  if (props.item.properties['Sports, Health and Wellness Activities']) {
+    for (let i=0; i<props.item.properties['Sports, Health and Wellness Activities'].length-1; i++) {
+      value += props.item.properties['Sports, Health and Wellness Activities'][i] + ', ';
     }
-    value += props.item['Sports, Health and Wellness Activities'][props.item['Sports, Health and Wellness Activities'].length-1];
+    value += props.item.properties['Sports, Health and Wellness Activities'][props.item.properties['Sports, Health and Wellness Activities'].length-1];
   }
   return value;
 })
 
 const characterDevelopment = computed(() => {
   let value = ' ';
-  if (props.item['Character Education/Positive Youth Development']) {
-    for (let i=0; i<props.item['Character Education/Positive Youth Development'].length-1; i++) {
-      value += props.item['Character Education/Positive Youth Development'][i] + ', ';
+  if (props.item.properties['Character Education/Positive Youth Development']) {
+    for (let i=0; i<props.item.properties['Character Education/Positive Youth Development'].length-1; i++) {
+      value += props.item.properties['Character Education/Positive Youth Development'][i] + ', ';
     }
-    value += props.item['Character Education/Positive Youth Development'][props.item['Character Education/Positive Youth Development'].length-1];
+    value += props.item.properties['Character Education/Positive Youth Development'][props.item.properties['Character Education/Positive Youth Development'].length-1];
   }
   return value;
 });
 
 const communityService = computed(() => {
   let value = ' ';
-  if (props.item['Community Service Learning']) {
-    for (let i=0; i<props.item['Community Service Learning'].length-1; i++) {
-      value += props.item['Community Service Learning'][i] + ', ';
+  if (props.item.properties['Community Service Learning']) {
+    for (let i=0; i<props.item.properties['Community Service Learning'].length-1; i++) {
+      value += props.item.properties['Community Service Learning'][i] + ', ';
     }
-    value += props.item['Community Service Learning'][props.item['Community Service Learning'].length-1];
+    value += props.item.properties['Community Service Learning'][props.item.properties['Community Service Learning'].length-1];
   }
   return value;
 });
 
 const stem = computed(() => {
   let value = ' ';
-  if (props.item['STEM/STEAM']) {
-    for (let i=0; i<props.item['STEM/STEAM'].length-1; i++) {
-      value += props.item['STEM/STEAM'][i] + ', ';
+  if (props.item.properties['STEM/STEAM']) {
+    for (let i=0; i<props.item.properties['STEM/STEAM'].length-1; i++) {
+      value += props.item.properties['STEM/STEAM'][i] + ', ';
     }
-    value += props.item['STEM/STEAM'][props.item['STEM/STEAM'].length-1];
+    value += props.item.properties['STEM/STEAM'][props.item.properties['STEM/STEAM'].length-1];
   }
   return value;
 });
 
 const collegeCareer = computed(() => {
   let value = ' ';
-  if (props.item['College and Career Readiness']) {
-    for (let i=0; i<props.item['College and Career Readiness'].length-1; i++) {
-      value += props.item['College and Career Readiness'][i] + ', ';
+  if (props.item.properties['College and Career Readiness']) {
+    for (let i=0; i<props.item.properties['College and Career Readiness'].length-1; i++) {
+      value += props.item.properties['College and Career Readiness'][i] + ', ';
     }
-    value += props.item['College and Career Readiness'][props.item['College and Career Readiness'].length-1];
+    value += props.item.properties['College and Career Readiness'][props.item.properties['College and Career Readiness'].length-1];
   }
   return value;
 });
@@ -593,7 +593,7 @@ const transformPhone = (value) => {
     >
       {{ $t('focusArea.plural') }}
     </h3>
-    <div v-if="artsAndCulture && artsAndCulture.value > 1">
+    <div v-if="artsAndCulture && artsAndCulture.length > 1">
       <b>Arts and Culture:</b>{{ artsAndCulture }}
     </div>
     <div v-if="health && health.length > 1">
