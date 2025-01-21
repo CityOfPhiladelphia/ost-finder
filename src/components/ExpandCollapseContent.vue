@@ -151,11 +151,11 @@ const daysKey = computed(() => {
 
 // methods
 const getAges = (item) => {
-  // console.log('getAges is running, item:', item);
+  console.log('getAges is running, item:', item);
   let options = [ 'isUnder5', 'is5to10', 'is11to13', 'is14to18', 'isAbove18' ];
   let finalAges = [];
   for (let option of options) {
-    if (item[option] == '1') {
+    if (item.properties[option] == '1') {
       finalAges.push(t(`age.${option}`));
     }
   }
@@ -167,7 +167,7 @@ const getGrades = (item) => {
   let options = [ 'serviceGradeLevelPreK', 'serviceGradeLevelK', 'serviceGradeLevel6', 'serviceGradeLevel9' ];
   let finalGrades = [];
   for (let option of options) {
-    if (item[option] == '1') {
+    if (item.properties[option] == '1') {
       finalGrades.push(t(`grade.${option}`));
     }
   }
