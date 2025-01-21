@@ -22,6 +22,7 @@ export default {
   paymentOptions: 'Payment Options',
   season: 'Season',
   yearRound: 'Year Round',
+  parentSelfServiceURL: 'Parent Self Service URL',
   registration: {
     category: 'Registration',
     open: 'Open',

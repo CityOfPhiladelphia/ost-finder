@@ -457,7 +457,22 @@ const transformPhone = (value) => {
         </div>
 
         <div
-          v-if="item.properties.FACEBOOK && item.properties.FACEBOOK !== 'Lloyd Hall'"
+          v-if="item.attributes.ParentSelfServiceURL"
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <b>{{ $t('parentSelfServiceURL') }}:</b><a
+              target="_blank"
+              :href="makeValidUrl(item.attributes.ParentSelfServiceURL)"
+            >
+              {{ item.attributes.ParentSelfServiceURL }}
+              <font-awesome-icon icon="external-link-alt" />
+            </a>
+          </div>
+        </div>
+
+        <div
+          v-if="item.attributes.FACEBOOK && item.attributes.FACEBOOK !== 'Lloyd Hall'"
           class="columns is-mobile website-div"
         >
           <div class="column is-1">
