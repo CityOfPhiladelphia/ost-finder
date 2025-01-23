@@ -456,7 +456,7 @@ const transformPhone = (value) => {
           </div>
         </div>
 
-        <div
+        <!-- <div
           v-if="item.properties.ParentSelfServiceURL"
           class="columns is-mobile"
         >
@@ -469,7 +469,7 @@ const transformPhone = (value) => {
               <font-awesome-icon icon="external-link-alt" />
             </a>
           </div>
-        </div>
+        </div> -->
 
         <div
           v-if="item.properties.FACEBOOK && item.properties.FACEBOOK !== 'Lloyd Hall'"

@@ -3,8 +3,8 @@ export default {
   type: 'http-get',
   dependent: 'none',
   resettable: false,
-  url: 'https://stage.cityspan.com:8080/phillyost/service/getall',
-  // url: 'https://api.cityspan.com/phillyost/service/getall',
+  // url: 'https://stage.cityspan.com:8080/phillyost/service/getall',
+  url: 'https://api.cityspan.com/phillyost/service/getall',
   options: {
     success: function(data) {
       if (import.meta.env.VITE_DEBUG) console.log('ost.js success is running, data:', data);
