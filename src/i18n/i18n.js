@@ -8,6 +8,12 @@ import fr from './fr-fr';
 
 let i18n = {
   i18n: {
+    languages: [
+      {
+        language: 'en-US',
+        title: 'English',
+      },
+    ],
     header: 'inside',
     enabled: true,
     selectorHidden: true,

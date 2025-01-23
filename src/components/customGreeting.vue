@@ -1,6 +1,106 @@
+<script setup>
+
+import $config from '../main.js';
+
+const props = defineProps({
+  database: {
+    type: Array,
+  },
+  isMobile: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const sections = ref({});
+// const subsections = ref({});
+
+// computed
+const allExceptions = computed(() => {
+  console.log('allExceptions computed is running');
+  let exceptionsPreliminary = [];
+  let exceptionFields = [
+    'hours_mon_exceptions',
+    'hours_tues_exceptions',
+    'hours_wed_exceptions',
+    'hours_thurs_exceptions',
+    'hours_fri_exceptions',
+    'hours_sat_exceptions',
+    'hours_sun_exceptions',
+  ];
+  for (let location of database.value) {
+    if (location) {
+      // console.log('in loop, location:', location);
+      for (let field of exceptionFields) {
+        if (location.attributes[field]) {
+          exceptionsPreliminary.push(location.attributes[field]);
+        }
+      }
+    }
+  }
+  let exceptionsSet = new Set(exceptionsPreliminary);
+  let exceptionsArray = [ ...exceptionsSet ];
+
+  return exceptionsArray;
+});
+
+const database = computed(() => {
+  return DataStore.sources[DataStore.appType].data.rows || DataStore.sources[DataStore.appType].features || DataStore.sources[DataStore.appType].data;
+});
+
+const allLowCostOptions = computed(() => {
+  let notes = [];
+  for (let location of database.value) {
+    if (location) {
+      if (location.attributes.payment_other_low_cost) {
+        notes.push(location.attributes.payment_other_low_cost);
+      }
+    }
+  }
+  return notes;
+});
+
+const allFacebook = computed(() => {
+  let notes = [];
+  for (let location of database.value) {
+    if (location) {
+      if (location.attributes.contact_facebook) {
+        notes.push(location.attributes.contact_facebook);
+      }
+    }
+  }
+  return notes;
+});
+
+const allInstagram = computed(() => {
+  let notes = [];
+  for (let location of database.value) {
+    if (location) {
+      if (location.attributes.contact_instagram) {
+        notes.push(location.attributes.contact_instagram);
+      }
+    }
+  }
+  return notes;
+});
+
+const allTwitter = computed(() => {
+  let notes = [];
+  for (let location of database.value) {
+    if (location) {
+      if (location.attributes.contact_twitter) {
+        notes.push(location.attributes.contact_twitter);
+      }
+    }
+  }
+  return notes;
+});
+
+</script>
+
 <template>
   <div
-    class="custom-greeting content"
+    class="main-greeting"
   >
     <div
       id="main-area"
@@ -14,20 +114,28 @@
       
       <p v-html="$t('introPage.p2')" />
 
-      <ul>
-        <li
-          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
-          :key="index"
-          class="intro-list-item"
-          v-html="$t('introPage.ul1.' + index)"
-        />
-      </ul>
+      <div class="intro-list">
+        <ul>
+          <li
+            v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
+            :key="index"
+            class="intro-list-item"
+            v-html="$t('introPage.ul1.' + index)"
+          />
+        </ul>
+      </div>
 
-      <div class="has-text-centered container mb-1 mt-5">
+      <div class="has-text-centered container">
         <button
-          class="button open-list-button"
+          class="button greeting-button"
           @click="$emit('view-list')"
           v-html="$t('app.viewList')"
+        />
+        <button
+          v-if="isMobile"
+          class="button greeting-button"
+          @click="$emit('view-map')"
+          v-html="$t('app.viewMap')"
         />
       </div>
 
@@ -73,139 +181,3 @@
     </div> <!-- end of main-area -->
   </div>
 </template>
-
-<script>
-
-export default {
-  name: 'CustomGreeting',
-  props: {
-    'message': {
-      type: String,
-      default: function() {
-        return 'defaultMessage';
-      },
-    },
-  },
-  data() {
-    let data = {
-      sections: {},
-      subsections: {},
-    };
-    return data;
-  },
-  computed: {
-    allExceptions() {
-      console.log('allExceptions computed is running');
-      let exceptionsPreliminary = [];
-      let exceptionFields = [
-        'hours_mon_exceptions',
-        'hours_tues_exceptions',
-        'hours_wed_exceptions',
-        'hours_thurs_exceptions',
-        'hours_fri_exceptions',
-        'hours_sat_exceptions',
-        'hours_sun_exceptions',
-      ];
-      for (let location of this.database) {
-        if (location) {
-          // console.log('in loop, location:', location);
-          for (let field of exceptionFields) {
-            if (location.attributes[field]) {
-              exceptionsPreliminary.push(location.attributes[field]);
-            }
-          }
-        }
-      }
-      let exceptionsSet = new Set(exceptionsPreliminary);
-      let exceptionsArray = [ ...exceptionsSet ];
-
-      return exceptionsArray;
-    },
-    database() {
-      if (this.$store.state.sources[this.$appType].data) {
-        return this.$store.state.sources[this.$appType].data.rows || this.$store.state.sources[this.$appType].data.features || this.$store.state.sources[this.$appType].data;
-      }
-      return [];
-    },
-    allLowCostOptions() {
-      let notes = [];
-      for (let location of this.database) {
-        if (location) {
-          if (location.attributes.payment_other_low_cost) {
-            notes.push(location.attributes.payment_other_low_cost);
-          }
-        }
-      }
-      return notes;
-    },
-    allFacebook() {
-      let notes = [];
-      for (let location of this.database) {
-        if (location) {
-          if (location.attributes.contact_facebook) {
-            notes.push(location.attributes.contact_facebook);
-          }
-        }
-      }
-      return notes;
-    },
-    allInstagram() {
-      let notes = [];
-      for (let location of this.database) {
-        if (location) {
-          if (location.attributes.contact_instagram) {
-            notes.push(location.attributes.contact_instagram);
-          }
-        }
-      }
-      return notes;
-    },
-    allTwitter() {
-      let notes = [];
-      for (let location of this.database) {
-        if (location) {
-          if (location.attributes.contact_twitter) {
-            notes.push(location.attributes.contact_twitter);
-          }
-        }
-      }
-      return notes;
-    },
-    hasError() {
-      return this.$store.state.geocode.status === 'error';
-    },
-    errorMessage() {
-      const input = this.$store.state.geocode.input;
-      return `
-          <p>
-            We couldn't find
-            ${input ? '<strong>' + input + '</strong>' : 'that address'}.
-            Are you sure everything was spelled correctly?
-          </p>
-          <p>
-            Here are some examples of things you can search for:
-          </p>
-          <ul>
-            <li>1234 Market St</li>
-            <li>1001 Pine Street #201</li>
-            <li>12th & Market</li>
-            <li>883309050 (an OPA number with no hyphens or other characters)</li>
-          </ul>
-        `;
-    },
-  },
-};
-</script>
-
-<style lang="scss" scoped>
-@import "../../node_modules/@phila/pinboard/src/assets/scss/customGreeting.scss";
-
-li {
-  margin-top: 0px !important;
-}
-
-.intro-list-item {
-  line-height: 1.5rem;
-}
-
-</style>

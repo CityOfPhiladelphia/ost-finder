@@ -7,8 +7,8 @@ export default {
   url: 'https://api.cityspan.com/phillyost/service/getall',
   options: {
     success: function(data) {
-      console.log('ost.js success is running, data:', data);
-      let newData = { features: []};
+      if (import.meta.env.VITE_DEBUG) console.log('ost.js success is running, data:', data);
+      let newData = { features: [] };
       for (let datum of data) {
         newData.features.push({
           attributes: datum,
