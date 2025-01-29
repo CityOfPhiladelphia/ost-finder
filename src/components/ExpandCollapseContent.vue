@@ -17,6 +17,18 @@ const props = defineProps({
 });
 
 // computed
+const registrationOpen = computed(() => {
+  if (props.item.properties.RegistrationPeriodStartDate && props.item.properties.RegistrationPeriodEndDate) {
+    if (new Date(props.item.properties.RegistrationPeriodStartDate) <= new Date() && new Date(props.item.properties.RegistrationPeriodEndDate) >= new Date()) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+});
+
 const hasFocusAreas = computed(() => {
   return props.item.properties.isArt || props.item.properties.isHealth || props.item.properties.isCharacterDevelopment || props.item.properties.isCommunityService || props.item.properties.isSTEM || props.item.properties.isCareerConnected;
 });
@@ -456,21 +468,6 @@ const transformPhone = (value) => {
           </div>
         </div>
 
-        <!-- <div
-          v-if="item.properties.ParentSelfServiceURL"
-          class="columns is-mobile"
-        >
-          <div class="column is-11">
-            <b>{{ $t('parentSelfServiceURL') }}: </b><a
-              target="_blank"
-              :href="makeValidUrl(item.properties.ParentSelfServiceURL)"
-            >
-              {{ item.properties.ParentSelfServiceURL }}
-              <font-awesome-icon icon="external-link-alt" />
-            </a>
-          </div>
-        </div> -->
-
         <div
           v-if="item.properties.FACEBOOK && item.properties.FACEBOOK !== 'Lloyd Hall'"
           class="columns is-mobile website-div"
@@ -562,7 +559,7 @@ const transformPhone = (value) => {
         </div>
 
         <div
-          v-if="item.properties.ParentSelfServiceURL"
+          v-if="registrationOpen && item.properties.ParentSelfServiceURL"
           class="columns is-mobile"
         >
           <div class="column is-11">
