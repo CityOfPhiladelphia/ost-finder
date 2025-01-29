@@ -461,7 +461,7 @@ const transformPhone = (value) => {
           class="columns is-mobile"
         >
           <div class="column is-11">
-            <b>{{ $t('parentSelfServiceURL') }}:</b><a
+            <b>{{ $t('parentSelfServiceURL') }}: </b><a
               target="_blank"
               :href="makeValidUrl(item.properties.ParentSelfServiceURL)"
             >
@@ -558,6 +558,21 @@ const transformPhone = (value) => {
         >
           <div class="column is-11">
             <b>{{ $t('registration.end') }}:</b> {{ formatDate2(item.properties.RegistrationPeriodEndDate) }}
+          </div>
+        </div>
+
+        <div
+          v-if="item.properties.ParentSelfServiceURL"
+          class="columns is-mobile"
+        >
+          <div class="column is-11">
+            <a
+              :href="makeValidUrl(item.properties.ParentSelfServiceURL)"
+              target="_blank"
+              class="button is-primary"
+            >
+              Apply Now
+            </a>
           </div>
         </div>
 
