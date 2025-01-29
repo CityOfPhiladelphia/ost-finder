@@ -102,9 +102,9 @@ let $config = {
   },
   customComps,
   hiddenRefine: {
-    // isDemo(item) {
-    //   return item.properties.isdemo == "0"
-    // },
+    isDemo(item) {
+      return item.properties.isdemo == "0"
+    },
     SchoolYearOrSummer(item) {
       // return item.properties.SchoolYearOrSummer != 'School Year' && item.properties.isInPublicProgramDirectory == "1";
       return item.properties.ProgramLocatorActivityName !== ''
