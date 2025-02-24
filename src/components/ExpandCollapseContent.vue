@@ -409,6 +409,8 @@ const transformPhone = (value) => {
 
 <template>
   <div class="main-ec-content">
+
+    <div>servicename: {{ props.item.properties.servicename }}</div>
     
     <div class="columns top-section">
       <div class="column is-6">
