@@ -168,7 +168,7 @@ let $config = {
             i18n_key: 'achieversAndC2L.isAchievers',
             value: function(item) {
               console.log('item:', item);
-              return item.properties.isAcademicAchievers != null;
+              return item.properties.isAcademicAchievers == 1;
             },
           },
           'isC2L': {
