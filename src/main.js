@@ -142,7 +142,6 @@ let $config = {
     columns: true,
     multipleFieldGroups: {
       term: {
-        columns: 1,
         checkbox: {
           'summer': {
             unique_key: 'term_summer',
@@ -159,9 +158,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       achieversAndC2L: {
-        columns: 1,
         checkbox: {
           'isAchievers': {
             unique_key: 'achieversAndC2L_isAchievers',
@@ -179,9 +178,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       registration: {
-        columns: 1,
         checkbox: {
           'open': {
             unique_key: 'registration_open',
@@ -253,9 +252,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       age: {
-        columns: 1,
         checkbox: {
           'isUnder5': {
             unique_key: 'age_isUnder5',
@@ -293,9 +292,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       grade: {
-        columns: 1,
         checkbox: {
           'serviceGradeLevelPreK': {
             unique_key: 'grade_serviceGradeLevelPreK',
@@ -336,9 +335,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       focusArea: {
-        columns: 1,
         checkbox: {
           'isAcademic': {
             unique_key: 'focusArea_isAcademic',
@@ -390,9 +389,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       daysOffered: {
-        columns: 1,
         checkbox: {
           'monday': {
             unique_key: 'daysOffered_monday',
@@ -444,9 +443,9 @@ let $config = {
             },
           },
         },
+        columns: 1,
       },
       fee: {
-        columns: 1, 
         checkbox: {
           'free': {
             unique_key: 'fee_free',
@@ -502,6 +501,7 @@ let $config = {
             },
           },
         },
+        columns: 1, 
       },
       // transportation: {
       //   columns: 1,
