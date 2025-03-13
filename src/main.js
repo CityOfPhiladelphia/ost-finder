@@ -160,24 +160,37 @@ let $config = {
           },
         },
       },
-      achieversAndC2L: {
-        columns: 1,
+      programs: {
         checkbox: {
           'isAchievers': {
-            unique_key: 'achieversAndC2L_isAchievers',
-            i18n_key: 'achieversAndC2L.isAchievers',
+            unique_key: 'programs_isAchievers',
+            i18n_key: 'programs.isAchievers',
             value: function(item) {
               console.log('item:', item);
               return item.properties.isAcademicAchievers != null;
             },
           },
           'isC2L': {
-            unique_key: 'achieversAndC2L_isC2L',
-            i18n_key: 'achieversAndC2L.isC2L',
+            unique_key: 'programs_isC2L',
+            i18n_key: 'programs.isC2L',
             value: function(item) {
               return item.properties.isCareerConnected != null;
             },
           },
+          'isEDEYBreakCare': {
+            unique_key: 'programs_isEDEYBreakCare',
+            i18n_key: 'programs.isEDEYBreakCare',
+            value: function(item) {
+              return item.properties.isEDEYBreakCare == 1;
+            },
+          },
+          'isEDEYBeforeCare': {
+            unique_key: 'programs_isEDEYBeforeCare',
+            i18n_key: 'programs.isEDEYBeforeCare',
+            value: function(item) {
+              return item.properties.isEDEYBeforeCare == 1;
+            },
+          }
         },
       },
       registration: {
