@@ -108,6 +108,20 @@ const showTwitter = computed(() => {
   return value;
 });
 
+const program = computed(() => {
+  let value = null;
+  if (props.item.properties.isAcademicAchievers == '1') {
+    value = 'Summer Achievers';
+  } else if (props.item.properties.isCareerConnected != null) {
+    value = "Career Connected Learning (C2L-PHL)";
+  } else if (props.item.properties.isEDEYBreakCare == "1") {
+    value = "EDEY School Break Care";
+  } else if (props.item.properties.isEDEYBeforeCare == "1") {
+    value = "EDEY Before School Care";
+  }
+  return value;
+});
+
 const i18nLocale = computed(() => {
   return instance.appContext.config.globalProperties.$i18n.locale;
 });
@@ -631,6 +645,10 @@ const transformPhone = (value) => {
     <!-- <div v-html="item.properties.programdescription" /> -->
 
     <br>
+
+    <div v-if="program !== null">
+      <b>{{ $t('Program') }}:</b> {{ program }}
+    </div>
 
     <div v-if="getAges(item) !== null">
       <b>{{ $t('ages') }}:</b> {{ getAges(item) }}

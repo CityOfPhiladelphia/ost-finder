@@ -32,10 +32,12 @@ export default {
     summer: 'Summer',
     schoolYear: 'School Year',
   },
-  achieversAndC2L: {
+  programs: {
     category: 'Programs',
     isAchievers: 'Summer Achievers',
     isC2L: 'Career Connected Learning (C2L-PHL)',
+    isEDEYBreakCare: 'EDEY School Break Care',
+    isEDEYBeforeCare: 'EDEY Before School Care',
   },
   age: {
     category: 'Age',
