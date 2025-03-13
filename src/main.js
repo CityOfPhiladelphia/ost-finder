@@ -158,7 +158,6 @@ let $config = {
             },
           },
         },
-        columns: 1,
       },
       programs: {
         checkbox: {
