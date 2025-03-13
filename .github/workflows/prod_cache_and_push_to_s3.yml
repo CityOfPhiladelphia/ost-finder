@@ -43,6 +43,8 @@ jobs:
 
       - name: Build for production
         run: npm run build:production
+        env:
+          VITE_MODE: production
         
       - name: Deploy to Production s3, Set index headers
         env:

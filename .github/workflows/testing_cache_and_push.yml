@@ -40,6 +40,8 @@ jobs:
 
       - name: Build for testing
         run: npm run build:testing
+        env:
+          VITE_MODE: testing
         
       - name: Deploy to Testing s3, Set index headers
         env:
