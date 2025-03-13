@@ -43,6 +43,8 @@ jobs:
 
       - name: Build for development
         run: npm run build:development
+        env:
+          VITE_MODE: development
         
       - name: Deploy to Dev s3, Set index headers
         env:

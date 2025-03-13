@@ -26,11 +26,11 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus, faFacebook, faTwitter, faInstagram);
 
 // use these if running off unlinked package
-import pinboard from '@phila/pinboard';
-import '../node_modules/@phila/pinboard/dist/style.css';
+// import pinboard from '@phila/pinboard';
+// import '../node_modules/@phila/pinboard/dist/style.css';
 // OR
 // use this if running off linked package
-// import pinboard from '../node_modules/@phila/pinboard/src/main.js';
+import pinboard from '../node_modules/@phila/pinboard/src/main.js';
 
 // data-sources
 import ost from './data-sources/ost';
@@ -111,6 +111,15 @@ let $config = {
         && item.properties.ProgramLocatorActivityName !== null
         && item.properties.isInPublicProgramDirectory == "1";
     },
+    isTest(item) {
+      if (import.meta.env.VITE_MODE === 'production') {
+        // console.log('hiddenRefine isTest if, item:', item);
+        return item.properties.servicename != 'test';
+      } else {
+        // console.log('hiddenRefine isTest else, item:', item);
+        return true;
+      }
+    }
   },
   //   START_DATE: function(item) {
   //     // let today = format(new Date(), 'MM/dd/yyyy');
