@@ -111,6 +111,15 @@ let $config = {
         && item.properties.ProgramLocatorActivityName !== null
         && item.properties.isInPublicProgramDirectory == "1";
     },
+    isTest(item) {
+      if (import.meta.env.VITE_MODE === 'production') {
+        // console.log('hiddenRefine isTest if, item:', item);
+        return item.properties.servicename != 'test';
+      } else {
+        // console.log('hiddenRefine isTest else, item:', item);
+        return true;
+      }
+    }
   },
   //   START_DATE: function(item) {
   //     // let today = format(new Date(), 'MM/dd/yyyy');
@@ -158,25 +167,38 @@ let $config = {
             },
           },
         },
-        columns: 1,
       },
-      achieversAndC2L: {
+      programs: {
         checkbox: {
           'isAchievers': {
-            unique_key: 'achieversAndC2L_isAchievers',
-            i18n_key: 'achieversAndC2L.isAchievers',
+            unique_key: 'programs_isAchievers',
+            i18n_key: 'programs.isAchievers',
             value: function(item) {
               console.log('item:', item);
               return item.properties.isAcademicAchievers == 1;
             },
           },
           'isC2L': {
-            unique_key: 'achieversAndC2L_isC2L',
-            i18n_key: 'achieversAndC2L.isC2L',
+            unique_key: 'programs_isC2L',
+            i18n_key: 'programs.isC2L',
             value: function(item) {
               return item.properties.isCareerConnected != null;
             },
           },
+          'isEDEYBreakCare': {
+            unique_key: 'programs_isEDEYBreakCare',
+            i18n_key: 'programs.isEDEYBreakCare',
+            value: function(item) {
+              return item.properties.isEDEYBreakCare == 1;
+            },
+          },
+          'isEDEYBeforeCare': {
+            unique_key: 'programs_isEDEYBeforeCare',
+            i18n_key: 'programs.isEDEYBeforeCare',
+            value: function(item) {
+              return item.properties.isEDEYBeforeCare == 1;
+            },
+          }
         },
         columns: 1,
       },
