@@ -54,6 +54,7 @@ let $config = {
   i18n: i18n.i18n,
   app: {
     type: 'ost',
+    subtitle: 'i18n',
     logoSrc: logoSrc,
     logoLink: 'none',
     logoWidth: 200,
