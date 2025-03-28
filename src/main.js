@@ -78,6 +78,7 @@ let $config = {
     ],
     searchDistance: 3,
     fuseThreshold: 0.45,
+    fuseDistance: 200,
   },
   tags: {
     type: 'fieldValues',
