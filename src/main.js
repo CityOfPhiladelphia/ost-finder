@@ -45,8 +45,6 @@ const customComps = markRaw({
 import i18n from './i18n/i18n';
 if (import.meta.env.VITE_DEBUG) console.log('main.js i18n:', i18n);
 
-// import { format, parseISO, parse } from 'date-fns';
-
 import logoSrc from './assets/city-of-phila-beta.png';
 
 let $config = {
@@ -78,6 +76,7 @@ let $config = {
     ],
     searchDistance: 3,
     fuseThreshold: 0.45,
+    fuseDistance: 200,
   },
   tags: {
     type: 'fieldValues',
@@ -650,7 +649,7 @@ let $config = {
     },
     {
       type: "native",
-      href: "https://www.phila.gov/ost/program-locator/#/",
+      href: "https://www.phila.gov/ost/program-locator/",
       text: "app.about",
     },
     {
