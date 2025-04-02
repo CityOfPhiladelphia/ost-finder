@@ -327,39 +327,99 @@ let $config = {
               return item.properties.serviceGradeLevelPreK != null;
             },
           },
-          'serviceGradeLevelK5': {
-            unique_key: 'grade_serviceGradeLevelK5',
-            i18n_key: 'grade.serviceGradeLevelK5',
+          'serviceGradeLevelK': {
+            unique_key: 'grade_serviceGradeLevelK',
+            i18n_key: 'grade.serviceGradeLevelK',
             value: function(item) {
               return item.properties.serviceGradeLevelK != null
-              || item.properties.serviceGradeLevel1 != null
-              || item.properties.serviceGradeLevel2 != null
-              || item.properties.serviceGradeLevel3 != null
-              || item.properties.serviceGradeLevel4 != null
-              || item.properties.serviceGradeLevel5 != null;
             },
           },
-          'serviceGradeLevel68': {
-            unique_key: 'grade_serviceGradeLevel68',
-            i18n_key: 'grade.serviceGradeLevel68',
+          'serviceGradeLevel1': {
+            unique_key: 'grade_serviceGradeLevel1',
+            i18n_key: 'grade.serviceGradeLevel1',
+            value: function(item) {
+              return item.properties.serviceGradeLevel1 != null
+            },
+          },
+          'serviceGradeLevel2': {
+            unique_key: 'grade_serviceGradeLevel2',
+            i18n_key: 'grade.serviceGradeLevel2',
+            value: function(item) {
+              return item.properties.serviceGradeLevel2 != null
+            },
+          },
+          'serviceGradeLevel3': {
+            unique_key: 'grade_serviceGradeLevel3',
+            i18n_key: 'grade.serviceGradeLevel3',
+            value: function(item) {
+              return item.properties.serviceGradeLevel3 != null
+            },
+          },
+          'serviceGradeLevel4': {
+            unique_key: 'grade_serviceGradeLevel4',
+            i18n_key: 'grade.serviceGradeLevel4',
+            value: function(item) {
+              return item.properties.serviceGradeLevel4 != null
+            },
+          },
+          'serviceGradeLevel5': {
+            unique_key: 'grade_serviceGradeLevel5',
+            i18n_key: 'grade.serviceGradeLevel5',
+            value: function(item) {
+              return item.properties.serviceGradeLevel5 != null
+            },
+          },
+          'serviceGradeLevel6': {
+            unique_key: 'grade_serviceGradeLevel6',
+            i18n_key: 'grade.serviceGradeLevel6',
             value: function(item) {
               return item.properties.serviceGradeLevel6 != null
-              || item.properties.serviceGradeLevel7 != null
-              || item.properties.serviceGradeLevel8 != null;
             },
           },
-          'serviceGradeLevel912': {
-            unique_key: 'grade_serviceGradeLevel912',
-            i18n_key: 'grade.serviceGradeLevel912',
+          'serviceGradeLevel7': {
+            unique_key: 'grade_serviceGradeLevel7',
+            i18n_key: 'grade.serviceGradeLevel7',
+            value: function(item) {
+              return item.properties.serviceGradeLevel7 != null
+            },
+          },
+          'serviceGradeLevel8': {
+            unique_key: 'grade_serviceGradeLevel8',
+            i18n_key: 'grade.serviceGradeLevel8',
+            value: function(item) {
+              return item.properties.serviceGradeLevel8 != null
+            },
+          },
+          'serviceGradeLevel9': {
+            unique_key: 'grade_serviceGradeLevel9',
+            i18n_key: 'grade.serviceGradeLevel9',
             value: function(item) {
               return item.properties.serviceGradeLevel9 != null
-              || item.properties.serviceGradeLevel10 != null
-              || item.properties.serviceGradeLevel11 != null
-              || item.properties.serviceGradeLevel12 != null;
+            },
+          },
+          'serviceGradeLevel10': {
+            unique_key: 'grade_serviceGradeLevel10',
+            i18n_key: 'grade.serviceGradeLevel10',
+            value: function(item) {
+              return item.properties.serviceGradeLevel10 != null
+            },
+          },
+          'serviceGradeLevel11': {
+            unique_key: 'grade_serviceGradeLevel11',
+            i18n_key: 'grade.serviceGradeLevel11',
+            value: function(item) {
+              return item.properties.serviceGradeLevel11 != null
+            },
+          },
+          'serviceGradeLevel12': {
+            unique_key: 'grade_serviceGradeLevel12',
+            i18n_key: 'grade.serviceGradeLevel12',
+            value: function(item) {
+              return item.properties.serviceGradeLevel12 != null
             },
           },
         },
-        columns: 1,
+        columns: 2,
       },
       focusArea: {
         checkbox: {

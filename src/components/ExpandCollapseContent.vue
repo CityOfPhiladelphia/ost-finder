@@ -190,7 +190,22 @@ const getAges = (item) => {
 
 const getGrades = (item) => {
   // console.log('getGrades is running, item:', item);
-  let options = [ 'serviceGradeLevelPreK', 'serviceGradeLevelK', 'serviceGradeLevel6', 'serviceGradeLevel9' ];
+  let options = [
+    'serviceGradeLevelPreK',
+    'serviceGradeLevelK',
+    'serviceGradeLevel1',
+    'serviceGradeLevel2',
+    'serviceGradeLevel3',
+    'serviceGradeLevel4',
+    'serviceGradeLevel5',
+    'serviceGradeLevel6',
+    'serviceGradeLevel7',
+    'serviceGradeLevel8',
+    'serviceGradeLevel9',
+    'serviceGradeLevel10',
+    'serviceGradeLevel11',
+    'serviceGradeLevel12'
+  ];
   let finalGrades = [];
   for (let option of options) {
     if (item.properties[option] == '1') {
