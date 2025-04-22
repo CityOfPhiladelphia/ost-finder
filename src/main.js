@@ -681,21 +681,28 @@ let $config = {
     modal: {
       enabled: true,
       title: 'Disclaimer',
-      body: '<p>The Out-of-School programs (“OST Program(s)”) are not operated, endorsed, or \
-        controlled by the City of Philadelphia (“City”). The City is providing this list of \
-        programs for your convenience only. If you use any program links, you will leave \
-        the City’s website and be directed to a website for that particular OST Program.</p>\
-        <p>The City provides no warranties, promises, and/or representations of any kind, \
-        expressed or implied, as to the nature, standard, or accuracy provided by these OST \
-        Programs, nor to the suitability or otherwise information to your particular \
-        circumstances. The City does not endorse, approve, or control the information contained \
-        in the program websites. The information is provided only on an “as is” and “with all \
-        faults” basis.</p>\
-        <p>By clicking on any external links, you acknowledge that in no event shall the \
-        City be liable to you or to any other person or entity for any direct, indirect, \
-        special, incidental, or consequential or other damage, cost, or expense arising out \
-        of or in relation to the enrollment in these OST Programs or use of any of the OST \
-        Programs’ websites.</p>',
+      // body: '<p>The Out-of-School programs (“OST Program(s)”) are not operated, endorsed, or \
+      //   controlled by the City of Philadelphia (“City”). The City is providing this list of \
+      //   programs for your convenience only. If you use any program links, you will leave \
+      //   the City’s website and be directed to a website for that particular OST Program.</p>\
+      //   <p>The City provides no warranties, promises, and/or representations of any kind, \
+      //   expressed or implied, as to the nature, standard, or accuracy provided by these OST \
+      //   Programs, nor to the suitability or otherwise information to your particular \
+      //   circumstances. The City does not endorse, approve, or control the information contained \
+      //   in the program websites. The information is provided only on an “as is” and “with all \
+      //   faults” basis.</p>\
+      //   <p>By clicking on any external links, you acknowledge that in no event shall the \
+      //   City be liable to you or to any other person or entity for any direct, indirect, \
+      //   special, incidental, or consequential or other damage, cost, or expense arising out \
+      //   of or in relation to the enrollment in these OST Programs or use of any of the OST \
+      //   Programs’ websites.</p>',
+      body: `<p>The Out-of-School Time programs ("OST Program(s)") are operated and delivered by community-based organizations.</p>\
+      <p>The City of Philadelphia ("City") is providing this list of programs for your convenience only.</p>\
+      <p>If you use any program links, you will leave the City's website and be directed to a website for that particular OST Program.</p>\
+      <p>The City provides no warranties, promises, and/or representations of any kind, expressed or implied, as to the nature, standard, or accuracy provided by these OST Programs, nor to the suitability or otherwise information to your particular circumstances.</p>\
+      <p>The City does not endorse, approve, or control the information contained in the program websites.</p>\
+      <p>The information is provided only on an "as is" and "with all faults" basis.</p>\
+      <p>By clicking on any external links, you acknowledge that in no event shall the City be liable to you or to any other person or entity for any direct, indirect, special, incidental, or consequential or other damage, cost, or expense arising out of or in relation to the enrollment in these OST Programs or use of any of the OST Programs' websites.</p>`,
       },
   },
   footer: [
