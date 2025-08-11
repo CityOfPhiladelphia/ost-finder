@@ -263,7 +263,7 @@ const formatDate = (month, day) => {
     'vi': vi,
     'ch': zhCN,
     'es': es,
-    'en-US': enUS,
+    'en': enUS,
   };
   let value;
   if (month && day) {
@@ -438,7 +438,7 @@ const transformPhone = (value) => {
 
 <template>
   <div class="main-ec-content">
-    
+
     <div class="columns top-section">
       <div class="column is-6">
         <div

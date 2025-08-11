@@ -23,10 +23,6 @@ export default {
   season: 'Season',
   yearRound: 'Year Round',
   parentSelfServiceURL: 'Parent Self Service URL',
-  registration: {
-    category: 'Registration',
-    open: 'Open',
-  },
   term: {
     category: 'Term',
     summer: 'Summer',
