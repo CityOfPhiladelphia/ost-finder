@@ -111,13 +111,13 @@ const allTwitter = computed(() => {
       </h3>
 
       <p v-html="$t('introPage.p0')" />
-      
+
       <p v-html="$t('introPage.p2')" />
 
       <div class="intro-list">
         <ul>
           <li
-            v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul1"
+            v-for="(item, index) in $config.i18n.data.messages['en'].introPage.ul1"
             :key="index"
             class="intro-list-item"
             v-html="$t('introPage.ul1.' + index)"
@@ -139,7 +139,7 @@ const allTwitter = computed(() => {
         />
       </div>
 
-      
+
 
       <!--
 
@@ -151,14 +151,14 @@ const allTwitter = computed(() => {
 
       <ul>
         <li
-          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul2"
+          v-for="(item, index) in $config.i18n.data.messages['en'].introPage.ul2"
           :key="index"
           class="intro-list-item"
           v-html="$t('introPage.ul2.' + index)"
         />
         <ul>
           <li
-            v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul3"
+            v-for="(item, index) in $config.i18n.data.messages['en'].introPage.ul3"
             :key="index"
             class="intro-list-item"
             v-html="$t('introPage.ul3.' + index)"
@@ -172,7 +172,7 @@ const allTwitter = computed(() => {
 
       <ul>
         <li
-          v-for="(item, index) in $config.i18n.data.messages['en-US'].introPage.ul4"
+          v-for="(item, index) in $config.i18n.data.messages['en'].introPage.ul4"
           :key="index"
           class="intro-list-item"
           v-html="$t('introPage.ul4.' + index)"
