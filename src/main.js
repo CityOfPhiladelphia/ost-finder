@@ -583,7 +583,7 @@ let $config = {
             },
           },
         },
-        columns: 1, 
+        columns: 1,
       },
       // transportation: {
       //   columns: 1,
@@ -642,7 +642,7 @@ let $config = {
       //     },
       //   },
       // },
-      
+
     },
   },
   dataSources: {
