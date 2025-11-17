@@ -25,12 +25,8 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
 
 library.add(farAngleDown, farAngleUp, farTimes, farPlus, farMinus, faCheck, faCarBus, faFacebook, faTwitter, faInstagram);
 
-// use these if running off unlinked package
-import pinboard from '@phila/pinboard';
 import '../node_modules/@phila/pinboard/dist/index.css';
-// OR
-// use this if running off linked package
-// import pinboard from '../../vue3-pinboard/';
+import pinboard from '@pinboard';
 
 // data-sources
 import ost from './data-sources/ost';
