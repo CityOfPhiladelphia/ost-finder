@@ -41,7 +41,7 @@ const customComps = markRaw({
 import i18n from './i18n/i18n';
 if (import.meta.env.VITE_DEBUG) console.log('main.js i18n:', i18n);
 
-import logoSrc from './assets/city-of-phila-beta.png';
+import logoSrc from './assets/city-of-philadelphia-yellow-white.png';
 
 let $config = {
   publicPath: import.meta.env.VITE_PUBLICPATH,
