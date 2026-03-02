@@ -205,9 +205,9 @@ let $config = {
             i18n_key: 'registration.open',
             value: function(item) {
               let value;
-              if (item.properties.RegistrationPeriodEndDate != null) {
-                // console.log('new Date():', new Date(), 'new Date(item.properties.RegistrationPeriodEndDate):', new Date(item.properties.RegistrationPeriodEndDate));
-                value = new Date() < new Date(item.properties.RegistrationPeriodEndDate);
+              if (item.properties.RegistrationPeriodStartDate != null && item.properties.RegistrationPeriodEndDate != null) {
+                let now = new Date();
+                value = new Date(item.properties.RegistrationPeriodStartDate) <= now && now <= new Date(item.properties.RegistrationPeriodEndDate);
               } else {
                 value = false;
               }
