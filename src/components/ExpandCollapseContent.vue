@@ -29,6 +29,13 @@ const registrationOpen = computed(() => {
   }
 });
 
+const displayAddress = computed(() => {
+  if (props.item.properties.activitysiteaddress === 'No') {
+    return props.item.properties.alternatesiteaddress || null;
+  }
+  return props.item.properties.address || null;
+});
+
 const hasFocusAreas = computed(() => {
   return props.item.properties.isArt || props.item.properties.isHealth || props.item.properties.isCharacterDevelopment || props.item.properties.isCommunityService || props.item.properties.isSTEM || props.item.properties.isCareerConnected;
 });
@@ -442,15 +449,15 @@ const transformPhone = (value) => {
     <div class="columns top-section">
       <div class="column is-6">
         <div
-          v-if="item.properties.address"
+          v-if="displayAddress"
           class="columns is-mobile"
         >
           <div class="column is-1">
             <font-awesome-icon icon="map-marker-alt" />
           </div>
           <div class="column is-11">
-            {{ item.properties.address }}<br>
-            Philadelphia, PA {{ item.properties.zip }}<br>
+            {{ displayAddress }}<br>
+            Philadelphia, PA<span v-if="item.properties.zip"> {{ item.properties.zip }}</span><br>
           </div>
         </div>
 
